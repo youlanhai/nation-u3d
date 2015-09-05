@@ -366,7 +366,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Priority: 128
   DopplerLevel: 1
@@ -629,6 +629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 547c3da6a43a1d141a285c22ab3eb5d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed_: 1
 --- !u!212 &1400672489
 SpriteRenderer:
   m_ObjectHideFlags: 0
