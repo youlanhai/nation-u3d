@@ -6,7 +6,7 @@ namespace mygame
 
 	public class Enemy : MonoBehaviour
 	{
-		float 	moveSpeed_ = -1.0f;
+		float 	moveSpeed_ = -2.0f;
 
 		// Use this for initialization
 		void Start ()

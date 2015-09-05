@@ -14,6 +14,8 @@ namespace mygame
 	public class Player : MonoBehaviour
 	{
 		Animator 		animator_;
+		AudioSource		fireAudio_;
+
 		FlyDirection	direction_ = FlyDirection.None;
 
 		public float 	moveSpeed_ = 1.0f;
@@ -24,6 +26,8 @@ namespace mygame
 		void Start()
 		{
 			animator_ = GetComponent<Animator>();
+
+			fireAudio_ = transform.FindChild("fireAudio").gameObject.GetComponent<AudioSource>();
 		}
 
 		void Update()
@@ -73,6 +77,8 @@ namespace mygame
 				GameObject prefab = Resources.Load<GameObject>("prefabs/bullet2");
 
 				Instantiate(prefab, transform.position, transform.rotation);
+
+				fireAudio_.Play();
 			}
 		}
 	};
