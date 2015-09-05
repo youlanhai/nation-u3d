@@ -48,11 +48,11 @@ namespace mygame
 				direction_ = dir;
 				if(direction_ == FlyDirection.Left)
 				{
-					animator_.Play("fly_right");
+					animator_.Play("fly_left");
 				}
 				else if(direction_ == FlyDirection.Right)
 				{
-					animator_.Play("fly_left");
+					animator_.Play("fly_right");
 				}
 			}
 		}
