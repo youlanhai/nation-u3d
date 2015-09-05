@@ -17,6 +17,9 @@ namespace mygame
 		FlyDirection	direction_ = FlyDirection.None;
 
 		public float 	moveSpeed_ = 1.0f;
+		public float 	fireCD_ = 0.5f;
+
+		float 			lastFireTime_ = 0.0f;
 
 		void Start()
 		{
@@ -39,6 +42,11 @@ namespace mygame
 			{
 				SetDirection(FlyDirection.Right);
 			}
+
+			if(Input.GetButton("Fire1"))
+			{
+				Fire();
+			}
 		}
 
 		void SetDirection(FlyDirection dir)
@@ -54,6 +62,19 @@ namespace mygame
 				{
 					animator_.Play("fly_right");
 				}
+			}
+		}
+
+		void Fire()
+		{
+			if(Time.time - lastFireTime_ >= fireCD_)
+			{
+				lastFireTime_ = Time.time;
+				GameObject bullet = Resources.Load<GameObject>("prefabs/bullet2");
+				bullet.transform.position = transform.position;
+				print ("Fire");
+
+
 			}
 		}
 	};
