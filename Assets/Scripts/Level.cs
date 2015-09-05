@@ -26,7 +26,7 @@ namespace mygame
 			{
 				lastCreateTime_ = Time.time;
 
-				float x = Random.Range(-monsterRange_, monsterRange_);
+				float x = monsterCenter_.x + Random.Range(-monsterRange_, monsterRange_);
 				Vector3 position = new Vector3(x, monsterCenter_.y, monsterCenter_.z);
 
 				GameObject prefab = Resources.Load("prefabs/enemy7") as GameObject;

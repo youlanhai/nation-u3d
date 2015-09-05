@@ -21,6 +21,11 @@ namespace mygame
 		{
 			transform.Translate(0.0f, moveSpeed_ * Time.deltaTime, 0.0f);
 		}
+
+		void OnTriggerEnter (Collider other)
+		{
+			print ("collid");
+		}
 	}
 
 }
