@@ -4,16 +4,14 @@ using System.Collections;
 namespace mygame
 {
 
-	public class Bullet : MonoBehaviour
+	public class Enemy : MonoBehaviour
 	{
-
-		public float moveSpeed_ = 1.0f;
+		float 	moveSpeed_ = -1.0f;
 
 		// Use this for initialization
 		void Start ()
 		{
-			GameObject.Destroy(gameObject, 3.0f);
-			moveSpeed_ = 2.0f;
+			GameObject.Destroy(gameObject, 5.0f);
 		}
 		
 		// Update is called once per frame

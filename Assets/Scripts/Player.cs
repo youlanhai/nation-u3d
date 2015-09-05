@@ -70,11 +70,9 @@ namespace mygame
 			if(Time.time - lastFireTime_ >= fireCD_)
 			{
 				lastFireTime_ = Time.time;
-				GameObject bullet = Resources.Load<GameObject>("prefabs/bullet2");
-				bullet.transform.position = transform.position;
-				print ("Fire");
+				GameObject prefab = Resources.Load<GameObject>("prefabs/bullet2");
 
-
+				Instantiate(prefab, transform.position, transform.rotation);
 			}
 		}
 	};
