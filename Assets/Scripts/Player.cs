@@ -11,14 +11,13 @@ namespace mygame
 		Right,
 	};
 
-	public class Player : MonoBehaviour
+	public class Player : Entity
 	{
 		Animator 		animator_;
 		AudioSource		fireAudio_;
 
 		FlyDirection	direction_ = FlyDirection.None;
 
-		public float 	moveSpeed_ = 1.0f;
 		public float 	fireCD_ = 0.5f;
 
 		float 			lastFireTime_ = 0.0f;
@@ -27,7 +26,7 @@ namespace mygame
 		{
 			animator_ = GetComponent<Animator>();
 
-			fireAudio_ = transform.FindChild("fireAudio").gameObject.GetComponent<AudioSource>();
+			fireAudio_ = GameObject.Find("MainCamera/fireAudio").gameObject.GetComponent<AudioSource>();
 		}
 
 		void Update()
@@ -76,10 +75,33 @@ namespace mygame
 				lastFireTime_ = Time.time;
 				GameObject prefab = Resources.Load<GameObject>("prefabs/bullet2");
 
-				Instantiate(prefab, transform.position, transform.rotation);
+				GameObject bullet = Instantiate(prefab, transform.position, transform.rotation) as GameObject;
+				Entity ent = bullet.GetComponent<Entity>();
+				ent.camp_ = camp_;
 
 				fireAudio_.Play();
+				print ("Player: fire");
 			}
+		}
+
+		void OnCollisionEnter2D(Collision2D collision)
+		{
+			print ("Player: collision enter.");
+		}
+
+		void OnCollisionExit2D(Collision2D collision)
+		{
+			print ("Player: collision exit.");
+		}
+
+		void OnTriggerEnter2D(Collider2D other)
+		{
+			print("Player: trigger enter.");
+		}
+
+		void OnTriggerExit2D(Collider2D other)
+		{
+			print("Player: trigger exit.");
 		}
 	};
 }

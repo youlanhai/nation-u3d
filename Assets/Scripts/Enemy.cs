@@ -4,10 +4,8 @@ using System.Collections;
 namespace mygame
 {
 
-	public class Enemy : MonoBehaviour
+	public class Enemy : Entity
 	{
-		float 	moveSpeed_ = -2.0f;
-
 		// Use this for initialization
 		void Start ()
 		{
@@ -18,6 +16,26 @@ namespace mygame
 		void Update ()
 		{
 			transform.Translate(0.0f, moveSpeed_ * Time.deltaTime, 0.0f);
+		}
+
+		void OnCollisionEnter2D(Collision2D collision)
+		{
+			print ("Enemy: collision enter.");
+		}
+		
+		void OnCollisionExit2D(Collision2D collision)
+		{
+			print ("Enemy: collision exit.");
+		}
+		
+		void OnTriggerEnter2D(Collider2D other)
+		{
+			print("Enemy: trigger enter.");
+		}
+		
+		void OnTriggerExit2D(Collider2D other)
+		{
+			print("Enemy: trigger exit.");
 		}
 	}
 
