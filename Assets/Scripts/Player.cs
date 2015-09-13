@@ -43,12 +43,12 @@ namespace mygame
 			float vertical = Input.GetAxis("Vertical");
 
 			Vector3 delta = new Vector3(horizontal, vertical, 0);
-			Vector3 position = delta * (moveSpeed_ * Time.deltaTime);
+			Vector3 position = transform.position + delta * (moveSpeed_ * Time.deltaTime);
 
 			Rect rect = GameMgr.instance.gameView_;
 			position.x = Mathf.Clamp(position.x, rect.xMin, rect.xMax);
 			position.y = Mathf.Clamp(position.y, rect.yMin, rect.yMax);
-			transform.Translate(position);
+			transform.position = position;
 
 			if(horizontal > 0)
 			{
@@ -59,7 +59,7 @@ namespace mygame
 				SetDirection(FlyDirection.Right);
 			}
 
-			if(Input.GetButton("Fire1"))
+			//if(Input.GetButton("Fire1"))
 			{
 				Fire();
 			}

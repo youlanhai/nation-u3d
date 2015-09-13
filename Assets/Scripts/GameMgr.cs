@@ -37,10 +37,20 @@ namespace mygame
 
 
 
-			//Camera camera = GameObject.Find("root/MainCamera").GetComponent<Camera>();
-			//camera.orthographicSize = gameView_.height * 0.5f;
-			//camera.aspect = gameView_.width / gameView_.height;
-
+//			Camera camera = GameObject.Find("root/MainCamera").GetComponent<Camera>();
+//			float aspect = gameView_.width / gameView_.height;
+//
+//			if(camera.aspect > aspect)
+//			{
+//				camera.orthographicSize = gameView_.height * 0.5f;
+//			}
+//			else if(camera.aspect < aspect)
+//			{
+//				// 屏幕宽度太窄，有部分画面会超出屏幕。
+//
+//				float height = gameView_.width / camera.aspect;
+//				camera.orthographicSize = height * 0.5f;
+//			}
 		}
 	};
 }
