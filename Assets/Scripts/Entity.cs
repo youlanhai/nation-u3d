@@ -50,7 +50,7 @@ namespace mygame
 
 		public virtual bool canIAttack(Entity target)
 		{
-			return target.isAlive_ && (whatRelation(target) == Relation.Bad);
+			return isAlive_ && target.isAlive_ && (whatRelation(target) == Relation.Bad);
 		}
 
 		public virtual void setHP(int hp)

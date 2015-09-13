@@ -6,6 +6,8 @@ namespace mygame
 
 	public class Enemy : Combat
 	{
+		bool 	isActive_ = false;
+
 		// Use this for initialization
 		void Start ()
 		{
@@ -16,8 +18,6 @@ namespace mygame
 			{
 				fireAudio_ = t.GetComponent<AudioSource>();
 			}
-
-			GameObject.Destroy(gameObject, 5.0f);
 		}
 		
 		// Update is called once per frame
@@ -26,7 +26,28 @@ namespace mygame
 			if(isAlive_)
 			{
 				transform.Translate(0.0f, moveSpeed_ * Time.deltaTime, 0.0f);
-				Fire();
+
+				if(!isActive_)
+				{
+					if(GameMgr.instance.gameView_.Contains(transform.position))
+					{
+						isActive_ = true;
+					}
+				}
+				else
+				{
+					if(!GameMgr.instance.gameView_.Contains(transform.position))
+					{
+						isActive_ = false;
+						isAlive_ = false;
+						Destroy(gameObject, 0.1f);
+					}
+				}
+
+				if(isActive_)
+				{
+					Fire();
+				}
 			}
 		}
 

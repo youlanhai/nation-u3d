@@ -7,6 +7,7 @@ namespace mygame
 	public class Bullet : Entity
 	{
 		protected Combat		owner_;
+		bool 					isActive_ = false;
 
 		public GameObject		explosePrefab_;
 
@@ -22,7 +23,6 @@ namespace mygame
 		// Use this for initialization
 		void Start ()
 		{
-			GameObject.Destroy(gameObject, 3.0f);
 		}
 		
 		// Update is called once per frame
@@ -31,6 +31,23 @@ namespace mygame
 			if(isAlive_)
 			{
 				transform.Translate(0.0f, moveSpeed_ * Time.deltaTime, 0.0f);
+
+				if(!isActive_)
+				{
+					if(GameMgr.instance.gameView_.Contains(transform.position))
+					{
+						isActive_ = true;
+					}
+				}
+				else
+				{
+					if(!GameMgr.instance.gameView_.Contains(transform.position))
+					{
+						isAlive_ = false;
+						isActive_ = false;
+						Destroy(gameObject, 0.1f);
+					}
+				}
 			}
 		}
 
