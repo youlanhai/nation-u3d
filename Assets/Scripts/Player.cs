@@ -39,25 +39,50 @@ namespace mygame
 				return;
 			}
 
-			float horizontal = Input.GetAxis("Horizontal");
-			float vertical = Input.GetAxis("Vertical");
+			Vector3 position = transform.position;
 
-			Vector3 delta = new Vector3(horizontal, vertical, 0);
-			Vector3 position = transform.position + delta * (moveSpeed_ * Time.deltaTime);
+			if(Application.platform == RuntimePlatform.Android ||
+			   Application.platform == RuntimePlatform.IPhonePlayer)
+			{
+				if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+				{
+					float horizontal = Input.GetAxis("Mouse X");
+					float vertical = Input.GetAxis("Mouse Y");
+
+					Vector3 delta = new Vector3(horizontal, vertical, 0);
+					position += delta * (moveSpeed_ * Time.deltaTime);
+				}
+			}
+			else if(Input.GetMouseButton(0))
+			{
+				float horizontal = Input.GetAxis("Mouse X");
+				float vertical = Input.GetAxis("Mouse Y");
+				
+				Vector3 delta = new Vector3(horizontal, vertical, 0);
+				position += delta * (moveSpeed_ * Time.deltaTime);
+			}
+			else
+			{
+				float horizontal = Input.GetAxis("Horizontal");
+				float vertical = Input.GetAxis("Vertical");
+				
+				Vector3 delta = new Vector3(horizontal, vertical, 0);
+				position += delta * (moveSpeed_ * Time.deltaTime);
+			}
 
 			Rect rect = GameMgr.instance.gameView_;
 			position.x = Mathf.Clamp(position.x, rect.xMin, rect.xMax);
 			position.y = Mathf.Clamp(position.y, rect.yMin, rect.yMax);
 			transform.position = position;
 
-			if(horizontal > 0)
-			{
-				SetDirection(FlyDirection.Left);
-			}
-			else if(horizontal < 0)
-			{
-				SetDirection(FlyDirection.Right);
-			}
+//			if(horizontal > 0)
+//			{
+//				SetDirection(FlyDirection.Left);
+//			}
+//			else if(horizontal < 0)
+//			{
+//				SetDirection(FlyDirection.Right);
+//			}
 
 			//if(Input.GetButton("Fire1"))
 			{
