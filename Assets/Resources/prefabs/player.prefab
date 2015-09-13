@@ -110,6 +110,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed_: 2
+  destroyable_: 0
+  camp_: 0
+  hp_: 1000
+  attack_: 500
+  isAlive_: 1
   fireCD_: .200000003
 --- !u!212 &21249374
 SpriteRenderer:
@@ -143,7 +148,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: camp_
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 113322}

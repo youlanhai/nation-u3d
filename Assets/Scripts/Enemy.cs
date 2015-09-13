@@ -15,7 +15,10 @@ namespace mygame
 		// Update is called once per frame
 		void Update ()
 		{
-			transform.Translate(0.0f, moveSpeed_ * Time.deltaTime, 0.0f);
+			if(isAlive_)
+			{
+				transform.Translate(0.0f, moveSpeed_ * Time.deltaTime, 0.0f);
+			}
 		}
 
 		void OnCollisionEnter2D(Collision2D collision)
@@ -36,6 +39,14 @@ namespace mygame
 		void OnTriggerExit2D(Collider2D other)
 		{
 			print("Enemy: trigger exit.");
+		}
+
+		public override void onDead()
+		{
+			Object prefab = Resources.Load("prefabs/explose1");
+			GameObject.Instantiate (prefab, transform.position, Quaternion.identity);
+			
+			GameObject.Destroy(gameObject);
 		}
 	}
 

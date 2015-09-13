@@ -15,28 +15,24 @@ namespace mygame
 		// Update is called once per frame
 		void Update ()
 		{
-			transform.Translate(0.0f, moveSpeed_ * Time.deltaTime, 0.0f);
+			if(isAlive_)
+			{
+				transform.Translate(0.0f, moveSpeed_ * Time.deltaTime, 0.0f);
+			}
 		}
 
 		void OnTriggerEnter2D(Collider2D other)
 		{
-			print("Bullet: trigger enter.");
+			//print("Bullet: trigger enter.");
 
 			Entity target = other.GetComponent<Entity>();
 
-			if(canIDestroy(target))
+			if(canIAttack(target))
 			{
+				target.setHP(target.hp_ - attack_);
+
 				Object obj = Resources.Load("prefabs/explose3");
 				GameObject.Instantiate (obj, transform.position, Quaternion.identity);
-
-				target.hp_ -= attack_;
-				if(target.hp_ <= 0)
-				{
-					Object prefab = Resources.Load("prefabs/explose2");
-					GameObject.Instantiate (prefab, target.transform.position, Quaternion.identity);
-
-					GameObject.Destroy(target.gameObject);
-				}
 
 				Destroy(gameObject);
 			}
@@ -44,7 +40,7 @@ namespace mygame
 		
 		void OnTriggerExit2D(Collider2D other)
 		{
-			print("Bullet: trigger exit.");
+			//print("Bullet: trigger exit.");
 		}
 	}
 

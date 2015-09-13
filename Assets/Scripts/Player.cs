@@ -22,20 +22,33 @@ namespace mygame
 
 		float 			lastFireTime_ = 0.0f;
 
+		int 			score_ = 0;
+		int 			lvl_ = 1;
+
 		void Start()
 		{
 			animator_ = GetComponent<Animator>();
 
-			fireAudio_ = GameObject.Find("MainCamera/fireAudio").gameObject.GetComponent<AudioSource>();
+			fireAudio_ = transform.FindChild("fireAudio").GetComponent<AudioSource>();
 		}
 
 		void Update()
 		{
+			if(!isAlive_)
+			{
+				return;
+			}
+
 			float horizontal = Input.GetAxis("Horizontal");
 			float vertical = Input.GetAxis("Vertical");
 
 			Vector3 delta = new Vector3(horizontal, vertical, 0);
-			transform.position += delta * moveSpeed_ * Time.deltaTime;
+			Vector3 position = delta * (moveSpeed_ * Time.deltaTime);
+
+			Rect rect = GameMgr.instance.gameView_;
+			position.x = Mathf.Clamp(position.x, rect.xMin, rect.xMax);
+			position.y = Mathf.Clamp(position.y, rect.yMin, rect.yMax);
+			transform.Translate(position);
 
 			if(horizontal > 0)
 			{
@@ -79,19 +92,12 @@ namespace mygame
 				Entity ent = bullet.GetComponent<Entity>();
 				ent.camp_ = camp_;
 
-				fireAudio_.Play();
-				print ("Player: fire");
+				//if(!fireAudio_.isPlaying)
+				{
+					fireAudio_.Play();
+				}
+				//print ("Player: fire");
 			}
-		}
-
-		void OnCollisionEnter2D(Collision2D collision)
-		{
-			print ("Player: collision enter.");
-		}
-
-		void OnCollisionExit2D(Collision2D collision)
-		{
-			print ("Player: collision exit.");
 		}
 
 		void OnTriggerEnter2D(Collider2D other)

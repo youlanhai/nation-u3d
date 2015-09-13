@@ -25,6 +25,8 @@ namespace mygame
 		public int 		hp_ = 1000;
 		public int 		attack_ = 500;
 
+		public bool		isAlive_ = true;
+
 		public Relation whatRelation(Entity target)
 		{
 			if(target.camp_ == Camp.Peace ||
@@ -43,9 +45,43 @@ namespace mygame
 			}
 		}
 
-		public bool canIDestroy(Entity target)
+		public bool canIAttack(Entity target)
 		{
 			return whatRelation(target) == Relation.Bad;
+		}
+
+		public void setHP(int hp)
+		{
+			if(isAlive_)
+			{
+				hp_ = Mathf.Max(hp, 0);
+				if(hp_ == 0)
+				{
+					setAlive(false);
+				}
+			}
+		}
+		
+		public void setAlive(bool alive)
+		{
+			isAlive_ = alive;
+			if(isAlive_)
+			{
+				onAlive();
+			}
+			else
+			{
+				onDead();
+			}
+		}
+		
+		public virtual void onDead()
+		{
+			print ("onDead: " + gameObject.name);
+		}
+
+		public virtual void onAlive()
+		{
 		}
 	}
 	
