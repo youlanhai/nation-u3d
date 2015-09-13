@@ -9,6 +9,14 @@ namespace mygame
 		// Use this for initialization
 		void Start ()
 		{
+			animator_ = GetComponent<Animator>();
+
+			Transform t = transform.FindChild("fireAudio");
+			if(t != null)
+			{
+				fireAudio_ = t.GetComponent<AudioSource>();
+			}
+
 			GameObject.Destroy(gameObject, 5.0f);
 		}
 		
@@ -18,19 +26,10 @@ namespace mygame
 			if(isAlive_)
 			{
 				transform.Translate(0.0f, moveSpeed_ * Time.deltaTime, 0.0f);
+				Fire();
 			}
 		}
 
-		void OnCollisionEnter2D(Collision2D collision)
-		{
-			print ("Enemy: collision enter.");
-		}
-		
-		void OnCollisionExit2D(Collision2D collision)
-		{
-			print ("Enemy: collision exit.");
-		}
-		
 		void OnTriggerEnter2D(Collider2D other)
 		{
 			print("Enemy: trigger enter.");
@@ -41,12 +40,9 @@ namespace mygame
 			print("Enemy: trigger exit.");
 		}
 
-		public override void onDead()
+		protected override void onDead()
 		{
-			Object prefab = Resources.Load("prefabs/explose/explose1");
-			GameObject.Instantiate (prefab, transform.position, Quaternion.identity);
-
-			gameObject.SetActive(false);
+			base.onDead();
 			GameObject.Destroy(gameObject, 1.0f);
 		}
 	}

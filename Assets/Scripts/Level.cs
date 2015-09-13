@@ -1,15 +1,28 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace mygame
 {
+	[System.Serializable]
+	public struct LevelNode
+	{
+		public float 		time;
+		public GameObject 	entityPrefab;
+		public Vector2 		position;
+	}
 	
 	public class Level : MonoBehaviour
 	{
 		public float 		createInterval_ = 2.0f;
+		public GameObject   randomEnemyPrefab_;
+
 		public Rect			localGameView_;
+		public LevelNode[] 	levelNodes_;
 
 		float 				lastCreateTime_ = 0.0f;
+		float 				totalTime_ = 0;
+		int 				waveIndex_ = 0;
 		
 		// Use this for initialization
 		void Start ()
@@ -28,19 +41,37 @@ namespace mygame
 		// Update is called once per frame
 		void Update ()
 		{
+			totalTime_ += Time.deltaTime;
+			if(waveIndex_ < levelNodes_.Length)
+			{
+				while(waveIndex_ < levelNodes_.Length &&
+				      totalTime_ >= levelNodes_[waveIndex_].time)
+				{
+					createEntity(levelNodes_[waveIndex_++]);
+				}
+			}
+
 			if(Time.time - lastCreateTime_ >= createInterval_)
 			{
 				lastCreateTime_ = Time.time;
 
-				Rect gameView = GameMgr.instance.gameView_;
+				LevelNode node = new LevelNode();
+				
+				float x = Random.Range(localGameView_.xMin, localGameView_.xMax);
+				node.time = totalTime_;
+				node.position = new Vector3(x, localGameView_.yMax, 0);
+				node.entityPrefab = randomEnemyPrefab_;
 
-				float x = Random.Range(gameView.xMin, gameView.xMax);
-				Vector3 position = new Vector3(x, gameView.yMax, 0);
-
-				GameObject prefab = Resources.Load("prefabs/plane/enemy7") as GameObject;
-				GameObject.Instantiate(prefab, position, Quaternion.identity);
+				createEntity(node);
 			}
 		}
+		
+		void createEntity(LevelNode node)
+		{
+			Vector3 position = new Vector3(node.position.x, node.position.y, 0.0f);
+			position = transform.TransformPoint(position);
+
+			GameObject.Instantiate(node.entityPrefab, position, Quaternion.identity);
+		}
 	}
-	
 }

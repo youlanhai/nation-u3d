@@ -50,10 +50,10 @@ namespace mygame
 
 		public virtual bool canIAttack(Entity target)
 		{
-			return target.isAlive_ && whatRelation(target) == Relation.Bad;
+			return target.isAlive_ && (whatRelation(target) == Relation.Bad);
 		}
 
-		public void setHP(int hp)
+		public virtual void setHP(int hp)
 		{
 			if(isAlive_)
 			{
@@ -78,12 +78,12 @@ namespace mygame
 			}
 		}
 		
-		public virtual void onDead()
+		protected virtual void onDead()
 		{
 			print ("onDead: " + gameObject.name);
 		}
 
-		public virtual void onAlive()
+		protected virtual void onAlive()
 		{
 		}
 	}

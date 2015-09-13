@@ -110,7 +110,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 145814743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.04, y: 3.66000009, z: 0}
+  m_LocalPosition: {x: -4.32999992, y: 3.67000008, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1997420572}
@@ -129,13 +129,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d06e8be7b201e448cfaa7a5a57a96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createInterval_: 2
+  createInterval_: 1
+  randomEnemyPrefab_: {fileID: 126952, guid: 39a628ada9037d4458477695ce759aaf, type: 2}
   localGameView_:
     serializedVersion: 2
     x: -3
     y: -2.9000001
     width: 6
     height: 6.5999999
+  levelNodes_:
+  - time: 5
+    entityPrefab: {fileID: 150664, guid: 655021b46208cf849bd39e47c8fd440e, type: 2}
+    position: {x: -2, y: 4}
+  - time: 5
+    entityPrefab: {fileID: 150664, guid: 655021b46208cf849bd39e47c8fd440e, type: 2}
+    position: {x: 0, y: 4}
+  - time: 5
+    entityPrefab: {fileID: 150664, guid: 655021b46208cf849bd39e47c8fd440e, type: 2}
+    position: {x: 2, y: 4}
+  - time: 10
+    entityPrefab: {fileID: 150664, guid: 655021b46208cf849bd39e47c8fd440e, type: 2}
+    position: {x: 0, y: 4}
+  - time: 15
+    entityPrefab: {fileID: 150664, guid: 655021b46208cf849bd39e47c8fd440e, type: 2}
+    position: {x: 0, y: 4}
 --- !u!1 &233516988
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,7 +363,7 @@ RectTransform:
   m_AnchoredPosition: {x: 284, y: -10}
   m_SizeDelta: {x: 41, y: 30}
   m_Pivot: {x: .5, y: .5}
---- !u!1001 &995452582
+--- !u!1001 &851563054
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -387,11 +404,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22418322, guid: fb3772066468baf4688ffd0fef345b3a, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -0
+      value: .0700000003
       objectReference: {fileID: 0}
     - target: {fileID: 22418322, guid: fb3772066468baf4688ffd0fef345b3a, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -1.33000004
+      value: .5
       objectReference: {fileID: 0}
     - target: {fileID: 22418322, guid: fb3772066468baf4688ffd0fef345b3a, type: 2}
       propertyPath: m_SizeDelta.x
@@ -432,7 +449,7 @@ Prefab:
 RectTransform:
   m_PrefabParentObject: {fileID: 22418322, guid: fb3772066468baf4688ffd0fef345b3a,
     type: 2}
-  m_PrefabInternal: {fileID: 995452582}
+  m_PrefabInternal: {fileID: 851563054}
 --- !u!1 &1176579900
 GameObject:
   m_ObjectHideFlags: 0

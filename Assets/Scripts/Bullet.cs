@@ -4,9 +4,11 @@ using System.Collections;
 namespace mygame
 {
 
-	public class Bullet : Combat
+	public class Bullet : Entity
 	{
-		Combat		owner_;
+		protected Combat		owner_;
+
+		public GameObject		explosePrefab_;
 
 		public void setOwner(Combat owner)
 		{
@@ -38,13 +40,14 @@ namespace mygame
 
 			Combat target = other.GetComponent<Combat>();
 
-			if(canIAttack(target))
+			if(target != null && canIAttack(target))
 			{
 				target.impact(owner_, -attack_);
 
-				Object obj = Resources.Load("prefabs/explose/explose3");
-				GameObject.Instantiate (obj, transform.position, Quaternion.identity);
-
+				if(explosePrefab_ != null)
+				{
+					GameObject.Instantiate (explosePrefab_, transform.position, Quaternion.identity);
+				}
 				Destroy(gameObject);
 			}
 		}

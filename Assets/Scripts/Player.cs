@@ -13,26 +13,19 @@ namespace mygame
 
 	public class Player : Combat
 	{
-		Animator 		animator_;
-		AudioSource		fireAudio_;
 
 		FlyDirection	direction_ = FlyDirection.None;
 
-		public float 	fireCD_ = 0.5f;
-
-		float 			lastFireTime_ = 0.0f;
 
 		StatusScript	status_;
 		int 			numBomb_ = 0;
 		int 			nextNeededScore_ = 1000;
 
 		public GameObject	lvlUpEffectPrefab_;
-		public GameObject	bulletPrefab_;
 
 		void Start()
 		{
 			animator_ = GetComponent<Animator>();
-
 			fireAudio_ = transform.FindChild("fireAudio").GetComponent<AudioSource>();
 
 			status_ = GameObject.Find("Canvas/status").GetComponent<StatusScript>();
@@ -105,24 +98,6 @@ namespace mygame
 			}
 		}
 
-		void Fire()
-		{
-			if(Time.time - lastFireTime_ >= fireCD_)
-			{
-				lastFireTime_ = Time.time;
-
-				GameObject bullet = Instantiate(bulletPrefab_, transform.position, transform.rotation) as GameObject;
-				Bullet ent = bullet.GetComponent<Bullet>();
-				ent.setOwner(this);
-
-				//if(!fireAudio_.isPlaying)
-				{
-					fireAudio_.Play();
-				}
-				//print ("Player: fire");
-			}
-		}
-
 		void OnTriggerEnter2D(Collider2D other)
 		{
 			print("Player: trigger enter.");
@@ -167,6 +142,12 @@ namespace mygame
 		void playLvlUpEffect()
 		{
 			Instantiate (lvlUpEffectPrefab_, transform.position, Quaternion.identity);
+		}
+
+		public override void setHP(int hp)
+		{
+			base.setHP(hp);
+			status_.setHP(hp_);
 		}
 	};
 }

@@ -8,12 +8,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 22418322}
+  - 212: {fileID: 21249374}
   - 114: {fileID: 11458156}
   - 95: {fileID: 9504324}
   - 50: {fileID: 5069858}
   - 68: {fileID: 6855916}
-  - 212: {fileID: 21249374}
-  - 222: {fileID: 22220138}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -44,7 +43,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147576}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.43700004, y: -1.67500007, z: 0}
+  m_LocalPosition: {x: .699999988, y: -.360000014, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22418322}
@@ -79,25 +78,19 @@ EdgeCollider2D:
   m_Points:
   - {x: -.149999872, y: .0202552676}
   - {x: -.150738969, y: .0724457502}
-  - {x: -.0626127869, y: .0178230405}
-  - {x: -.0292375274, y: .0594760776}
-  - {x: -.0807941109, y: .0882824659}
   - {x: -.0792553574, y: .119642198}
   - {x: -.0282066055, y: .15751493}
   - {x: -.0160505958, y: .344878018}
   - {x: .0147287659, y: .345521688}
   - {x: .0277120881, y: .153531969}
   - {x: .0800192207, y: .119728029}
-  - {x: .08165811, y: .0856678486}
-  - {x: .0271832757, y: .0588238835}
-  - {x: .0597979836, y: .0222097635}
-  - {x: .154334292, y: .0763981342}
-  - {x: .156979784, y: .0279144049}
+  - {x: .148466766, y: .0724871159}
+  - {x: .149157226, y: .0279142857}
   - {x: .0423528962, y: -.0765919685}
   - {x: .0449807458, y: -.174689651}
   - {x: -.0463793464, y: -.176916599}
   - {x: -.0450694747, y: -.0713807344}
-  - {x: -.154080167, y: .0188994408}
+  - {x: -.146257699, y: .0267226696}
 --- !u!82 &8252478
 AudioSource:
   m_ObjectHideFlags: 1
@@ -206,8 +199,9 @@ MonoBehaviour:
   isAlive_: 1
   score_: 0
   fireCD_: .200000003
-  lvlUpEffectPrefab_: {fileID: 168596, guid: dfad80b092e284049b6f81bdcc9277a4, type: 2}
   bulletPrefab_: {fileID: 183260, guid: 316964d0df1a76d428bffdb18f603621, type: 2}
+  explosePrefab_: {fileID: 118764, guid: 50c71d1faefe2094496375229aa87398, type: 2}
+  lvlUpEffectPrefab_: {fileID: 168596, guid: dfad80b092e284049b6f81bdcc9277a4, type: 2}
 --- !u!212 &21249374
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -234,12 +228,6 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f044344b09c2d4542a436bac616b915a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!222 &22220138
-CanvasRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 113322}
 --- !u!224 &22418322
 RectTransform:
   m_ObjectHideFlags: 1
@@ -255,7 +243,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -0, y: -1.33000004}
+  m_AnchoredPosition: {x: .0700000003, y: .5}
   m_SizeDelta: {x: .300000012, y: .689999998}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
@@ -269,6 +257,10 @@ Prefab:
       propertyPath: camp_
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: explosePrefab_
+      value: 
+      objectReference: {fileID: 118764, guid: 50c71d1faefe2094496375229aa87398, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 113322}

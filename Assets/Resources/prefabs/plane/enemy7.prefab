@@ -22,12 +22,12 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &432652
 Transform:
-  m_ObjectHideFlags: 9
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0299999993, y: 3.17000008, z: 0}
+  m_LocalPosition: {x: -12.5877752, y: 4.3561759, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -35,7 +35,7 @@ Transform:
 --- !u!50 &5043014
 Rigidbody2D:
   serializedVersion: 2
-  m_ObjectHideFlags: 9
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150664}
@@ -50,7 +50,7 @@ Rigidbody2D:
   m_Constraints: 0
 --- !u!68 &6820106
 EdgeCollider2D:
-  m_ObjectHideFlags: 9
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150664}
@@ -60,12 +60,17 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: -.230000004, y: 0}
-  - {x: .230000004, y: 0}
+  - {x: -.236381531, y: -.0414838791}
+  - {x: -.178699493, y: .146789551}
+  - {x: .165668488, y: .147307396}
+  - {x: .223342896, y: -.0183396339}
+  - {x: .121322632, y: -.281471729}
+  - {x: -.131903648, y: -.285865784}
+  - {x: -.23270607, y: -.0319108963}
 --- !u!95 &9576186
 Animator:
   serializedVersion: 3
-  m_ObjectHideFlags: 9
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150664}
@@ -81,7 +86,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11483652
 MonoBehaviour:
-  m_ObjectHideFlags: 9
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150664}
@@ -90,19 +95,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4d9bbe9502bd84393a6cff12cefb42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed_: -2
+  moveSpeed_: -.5
   destroyable_: 1
   camp_: 1
-  hp_: 1000
+  hp_: 10000
   attack_: 500
   defence_: 100
   eno_: 0
   lvl_: 0
   isAlive_: 1
   score_: 100
+  fireCD_: 2
+  bulletPrefab_: {fileID: 168090, guid: f31bdaee569a36f46bd845651d870e29, type: 2}
+  explosePrefab_: {fileID: 176140, guid: 8513661aa03a89b46ab5ec3b46075e41, type: 2}
 --- !u!212 &21239906
 SpriteRenderer:
-  m_ObjectHideFlags: 9
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150664}
@@ -160,6 +168,26 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: destroyable_
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireCD_
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bulletPrefab_
+      value: 
+      objectReference: {fileID: 168090, guid: f31bdaee569a36f46bd845651d870e29, type: 2}
+    - target: {fileID: 0}
+      propertyPath: explosePrefab_
+      value: 
+      objectReference: {fileID: 176140, guid: 8513661aa03a89b46ab5ec3b46075e41, type: 2}
+    - target: {fileID: 0}
+      propertyPath: hp_
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: moveSpeed_
+      value: -.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -1,0 +1,7 @@
+[
+	{"time" : 5, "entity" : "enemy7", "pos" : [-2, 4]},
+	{"time" : 5, "entity" : "enemy7", "pos" : [0, 4]},
+	{"time" : 5, "entity" : "enemy7", "pos" : [2, 4]},
+	{"time" : 10, "entity" : "enemy7", "pos" : [0, 4]},
+	{"time" : 15, "entity" : "enemy7", "pos" : [0, 4]},
+]

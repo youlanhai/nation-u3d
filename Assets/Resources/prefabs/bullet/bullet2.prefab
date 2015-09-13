@@ -20,7 +20,7 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &437296
 Transform:
-  m_ObjectHideFlags: 9
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183260}
@@ -32,7 +32,7 @@ Transform:
   m_RootOrder: 0
 --- !u!61 &6143064
 BoxCollider2D:
-  m_ObjectHideFlags: 9
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183260}
@@ -45,7 +45,7 @@ BoxCollider2D:
   m_Size: {x: .100000001, y: .270000011}
 --- !u!114 &11462538
 MonoBehaviour:
-  m_ObjectHideFlags: 9
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183260}
@@ -56,17 +56,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed_: 2
   destroyable_: 0
-  camp_: 2
+  camp_: 0
   hp_: 1000
   attack_: 500
   defence_: 100
   eno_: 0
   lvl_: 0
   isAlive_: 1
-  score_: 0
+  explosePrefab_: {fileID: 199296, guid: e2b2afc8417641b41a5bc434f63eebb9, type: 2}
 --- !u!212 &21277386
 SpriteRenderer:
-  m_ObjectHideFlags: 9
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183260}
@@ -113,6 +113,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: moveSpeed_
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: explosePrefab_
+      value: 
+      objectReference: {fileID: 199296, guid: e2b2afc8417641b41a5bc434f63eebb9, type: 2}
+    - target: {fileID: 0}
+      propertyPath: camp_
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
