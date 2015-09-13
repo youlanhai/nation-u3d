@@ -11,7 +11,7 @@ namespace mygame
 		Right,
 	};
 
-	public class Player : Entity
+	public class Player : Combat
 	{
 		Animator 		animator_;
 		AudioSource		fireAudio_;
@@ -22,14 +22,22 @@ namespace mygame
 
 		float 			lastFireTime_ = 0.0f;
 
-		int 			score_ = 0;
-		int 			lvl_ = 1;
+		StatusScript	status_;
+		int 			numBomb_ = 0;
+		int 			nextNeededScore_ = 1000;
 
 		void Start()
 		{
 			animator_ = GetComponent<Animator>();
 
 			fireAudio_ = transform.FindChild("fireAudio").GetComponent<AudioSource>();
+
+			status_ = GameObject.Find("Canvas/status").GetComponent<StatusScript>();
+			status_.setLvl(lvl_);
+			status_.setScore(score_);
+			status_.setBomb(numBomb_);
+			status_.setHP(hp_);
+			status_.setScoreNextNeed(nextNeededScore_);
 		}
 
 		void Update()
@@ -46,20 +54,11 @@ namespace mygame
 			{
 				if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
 				{
-					float horizontal = Input.GetAxis("Mouse X");
-					float vertical = Input.GetAxis("Mouse Y");
+					Vector2 dp = Input.GetTouch(0).deltaPosition;
 
-					Vector3 delta = new Vector3(horizontal, vertical, 0);
-					position += delta * (moveSpeed_ * Time.deltaTime);
+					Vector3 delta = new Vector3(dp.x, dp.y, 0);
+					position += delta * Time.deltaTime;
 				}
-			}
-			else if(Input.GetMouseButton(0))
-			{
-				float horizontal = Input.GetAxis("Mouse X");
-				float vertical = Input.GetAxis("Mouse Y");
-				
-				Vector3 delta = new Vector3(horizontal, vertical, 0);
-				position += delta * (moveSpeed_ * Time.deltaTime);
 			}
 			else
 			{
@@ -84,10 +83,7 @@ namespace mygame
 //				SetDirection(FlyDirection.Right);
 //			}
 
-			//if(Input.GetButton("Fire1"))
-			{
-				Fire();
-			}
+			Fire();
 		}
 
 		void SetDirection(FlyDirection dir)
@@ -114,8 +110,8 @@ namespace mygame
 				GameObject prefab = Resources.Load<GameObject>("prefabs/bullet2");
 
 				GameObject bullet = Instantiate(prefab, transform.position, transform.rotation) as GameObject;
-				Entity ent = bullet.GetComponent<Entity>();
-				ent.camp_ = camp_;
+				Bullet ent = bullet.GetComponent<Bullet>();
+				ent.setOwner(this);
 
 				//if(!fireAudio_.isPlaying)
 				{
@@ -133,6 +129,43 @@ namespace mygame
 		void OnTriggerExit2D(Collider2D other)
 		{
 			print("Player: trigger exit.");
+		}
+
+		public override void acquireScore(int score)
+		{
+			base.acquireScore(score);
+			
+			if(score_ >= nextNeededScore_)
+			{
+				onLvlUp();
+			}
+			else
+			{
+				status_.setScore(score_);
+			}
+		}
+
+		void onLvlUp()
+		{
+			score_ -= nextNeededScore_;
+			nextNeededScore_ *= 2;
+
+			lvl_ += 1;
+			attack_ += 10;
+			defence_ += 5;
+			numBomb_ += 1;
+			
+			status_.setLvl(lvl_);
+			status_.setScoreNextNeed(nextNeededScore_);
+			status_.setBomb(numBomb_);
+
+			playLvlUpEffect();
+		}
+
+		void playLvlUpEffect()
+		{
+			Object prefab = Resources.Load("prefabs/lvlup");
+			Instantiate (prefab, transform.position, Quaternion.identity);
 		}
 	};
 }

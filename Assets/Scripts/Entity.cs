@@ -24,6 +24,9 @@ namespace mygame
 		public Camp 	camp_ = Camp.Peace;
 		public int 		hp_ = 1000;
 		public int 		attack_ = 500;
+		public int 		defence_ = 100;
+		public int 		eno_ = 0;
+		public int 		lvl_ = 0;
 
 		public bool		isAlive_ = true;
 
@@ -45,9 +48,9 @@ namespace mygame
 			}
 		}
 
-		public bool canIAttack(Entity target)
+		public virtual bool canIAttack(Entity target)
 		{
-			return whatRelation(target) == Relation.Bad;
+			return target.isAlive_ && whatRelation(target) == Relation.Bad;
 		}
 
 		public void setHP(int hp)

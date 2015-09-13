@@ -4,8 +4,19 @@ using System.Collections;
 namespace mygame
 {
 
-	public class Bullet : Entity
+	public class Bullet : Combat
 	{
+		Combat		owner_;
+
+		public void setOwner(Combat owner)
+		{
+			owner_ = owner;
+
+			camp_ = owner_.camp_;
+			lvl_ = owner_.lvl_;
+			attack_ = owner_.attack_;
+		}
+
 		// Use this for initialization
 		void Start ()
 		{
@@ -25,11 +36,11 @@ namespace mygame
 		{
 			//print("Bullet: trigger enter.");
 
-			Entity target = other.GetComponent<Entity>();
+			Combat target = other.GetComponent<Combat>();
 
 			if(canIAttack(target))
 			{
-				target.setHP(target.hp_ - attack_);
+				target.impact(owner_, -attack_);
 
 				Object obj = Resources.Load("prefabs/explose3");
 				GameObject.Instantiate (obj, transform.position, Quaternion.identity);

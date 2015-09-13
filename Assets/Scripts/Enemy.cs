@@ -4,7 +4,7 @@ using System.Collections;
 namespace mygame
 {
 
-	public class Enemy : Entity
+	public class Enemy : Combat
 	{
 		// Use this for initialization
 		void Start ()
@@ -45,8 +45,9 @@ namespace mygame
 		{
 			Object prefab = Resources.Load("prefabs/explose1");
 			GameObject.Instantiate (prefab, transform.position, Quaternion.identity);
-			
-			GameObject.Destroy(gameObject);
+
+			gameObject.SetActive(false);
+			GameObject.Destroy(gameObject, 1.0f);
 		}
 	}
 
