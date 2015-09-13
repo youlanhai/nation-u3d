@@ -26,6 +26,9 @@ namespace mygame
 		int 			numBomb_ = 0;
 		int 			nextNeededScore_ = 1000;
 
+		public GameObject	lvlUpEffectPrefab_;
+		public GameObject	bulletPrefab_;
+
 		void Start()
 		{
 			animator_ = GetComponent<Animator>();
@@ -107,9 +110,8 @@ namespace mygame
 			if(Time.time - lastFireTime_ >= fireCD_)
 			{
 				lastFireTime_ = Time.time;
-				GameObject prefab = Resources.Load<GameObject>("prefabs/bullet2");
 
-				GameObject bullet = Instantiate(prefab, transform.position, transform.rotation) as GameObject;
+				GameObject bullet = Instantiate(bulletPrefab_, transform.position, transform.rotation) as GameObject;
 				Bullet ent = bullet.GetComponent<Bullet>();
 				ent.setOwner(this);
 
@@ -164,8 +166,7 @@ namespace mygame
 
 		void playLvlUpEffect()
 		{
-			Object prefab = Resources.Load("prefabs/lvlup");
-			Instantiate (prefab, transform.position, Quaternion.identity);
+			Instantiate (lvlUpEffectPrefab_, transform.position, Quaternion.identity);
 		}
 	};
 }

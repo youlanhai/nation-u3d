@@ -47,7 +47,7 @@ Transform:
   m_RootOrder: 0
 --- !u!4 &465264
 Transform:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 9
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196568}
@@ -60,7 +60,7 @@ Transform:
   m_RootOrder: 0
 --- !u!114 &11416562
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 9
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196568}
@@ -99,7 +99,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21283594
 SpriteRenderer:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 9
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196568}

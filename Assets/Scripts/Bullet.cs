@@ -42,7 +42,7 @@ namespace mygame
 			{
 				target.impact(owner_, -attack_);
 
-				Object obj = Resources.Load("prefabs/explose3");
+				Object obj = Resources.Load("prefabs/explose/explose3");
 				GameObject.Instantiate (obj, transform.position, Quaternion.identity);
 
 				Destroy(gameObject);

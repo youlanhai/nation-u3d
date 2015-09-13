@@ -43,7 +43,7 @@ namespace mygame
 
 		public override void onDead()
 		{
-			Object prefab = Resources.Load("prefabs/explose1");
+			Object prefab = Resources.Load("prefabs/explose/explose1");
 			GameObject.Instantiate (prefab, transform.position, Quaternion.identity);
 
 			gameObject.SetActive(false);

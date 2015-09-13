@@ -37,7 +37,7 @@ namespace mygame
 				float x = Random.Range(gameView.xMin, gameView.xMax);
 				Vector3 position = new Vector3(x, gameView.yMax, 0);
 
-				GameObject prefab = Resources.Load("prefabs/enemy7") as GameObject;
+				GameObject prefab = Resources.Load("prefabs/plane/enemy7") as GameObject;
 				GameObject.Instantiate(prefab, position, Quaternion.identity);
 			}
 		}

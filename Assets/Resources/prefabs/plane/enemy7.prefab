@@ -22,7 +22,7 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &432652
 Transform:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 9
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150664}
@@ -35,7 +35,7 @@ Transform:
 --- !u!50 &5043014
 Rigidbody2D:
   serializedVersion: 2
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 9
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150664}
@@ -50,7 +50,7 @@ Rigidbody2D:
   m_Constraints: 0
 --- !u!68 &6820106
 EdgeCollider2D:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 9
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150664}
@@ -65,7 +65,7 @@ EdgeCollider2D:
 --- !u!95 &9576186
 Animator:
   serializedVersion: 3
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 9
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150664}
@@ -81,7 +81,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11483652
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 9
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150664}
@@ -95,13 +95,14 @@ MonoBehaviour:
   camp_: 1
   hp_: 1000
   attack_: 500
+  defence_: 100
   eno_: 0
   lvl_: 0
   isAlive_: 1
   score_: 100
 --- !u!212 &21239906
 SpriteRenderer:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 9
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150664}
