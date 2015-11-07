@@ -23,6 +23,11 @@ namespace mygame
 			score_ += score;
 		}
 
+		public override bool isAttackable()
+		{
+			return true;
+		}
+
 		public void impact(Combat src, int hpDelta)
 		{
 			setHP(hp_ + hpDelta);

@@ -49,9 +49,14 @@ namespace mygame
 			}
 		}
 
+		public virtual bool isAttackable()
+		{
+			return false;
+		}
+
 		public virtual bool canIAttack(Entity target)
 		{
-			return isAlive_ && target.isAlive_ && (whatRelation(target) == Relation.Bad);
+			return isAlive_ && target.isAlive_ && (whatRelation(target) == Relation.Bad) && target.isAttackable();
 		}
 
 		public virtual void setHP(int hp)

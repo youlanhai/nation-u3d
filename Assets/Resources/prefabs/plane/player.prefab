@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11458156}
   - 95: {fileID: 9504324}
   - 50: {fileID: 5069858}
-  - 68: {fileID: 6855916}
+  - 58: {fileID: 5897118}
   - 82: {fileID: 8219262}
   m_Layer: 0
   m_Name: player
@@ -37,8 +37,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!68 &6855916
-EdgeCollider2D:
+--- !u!58 &5897118
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -48,22 +48,8 @@ EdgeCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
-  m_Points:
-  - {x: -.149999872, y: .0202552676}
-  - {x: -.150738969, y: .0724457502}
-  - {x: -.0792553574, y: .119642198}
-  - {x: -.0282066055, y: .15751493}
-  - {x: -.0160505958, y: .344878018}
-  - {x: .0147287659, y: .345521688}
-  - {x: .0277120881, y: .153531969}
-  - {x: .0800192207, y: .119728029}
-  - {x: .148466766, y: .0724871159}
-  - {x: .149157226, y: .0279142857}
-  - {x: .0423528962, y: -.0765919685}
-  - {x: .0449807458, y: -.174689651}
-  - {x: -.0463793464, y: -.176916599}
-  - {x: -.0450694747, y: -.0713807344}
-  - {x: -.146257699, y: .0267226696}
+  serializedVersion: 2
+  m_Radius: .0299999993
 --- !u!82 &8219262
 AudioSource:
   m_ObjectHideFlags: 1
@@ -162,10 +148,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 547c3da6a43a1d141a285c22ab3eb5d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed_: 2
+  moveSpeed_: 3
   destroyable_: 0
   camp_: 0
   hp_: 1000
+  hpMax_: 1000
   attack_: 500
   defence_: 100
   eno_: 0
@@ -176,6 +163,7 @@ MonoBehaviour:
   bulletPrefab_: {fileID: 183260, guid: 316964d0df1a76d428bffdb18f603621, type: 2}
   explosePrefab_: {fileID: 118764, guid: 50c71d1faefe2094496375229aa87398, type: 2}
   lvlUpEffectPrefab_: {fileID: 168596, guid: dfad80b092e284049b6f81bdcc9277a4, type: 2}
+  bornEffectPrefab_: {fileID: 167178, guid: d6c4ed4eb76604ad093b27805634f3b3, type: 2}
 --- !u!212 &21249374
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -216,7 +204,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: .0700000003, y: .5}
+  m_AnchoredPosition: {x: -.888000011, y: -1.28299999}
   m_SizeDelta: {x: .300000012, y: .689999998}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
@@ -237,6 +225,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: fireCD_
       value: .25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: moveSpeed_
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

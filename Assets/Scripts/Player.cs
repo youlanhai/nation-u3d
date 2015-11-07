@@ -20,8 +20,12 @@ namespace mygame
 		int 			nextNeededScore_ = 1000;
 
 		public GameObject	lvlUpEffectPrefab_;
+		public GameObject	bornEffectPrefab_;
 
 		Rigidbody2D 	rigidbody_;
+		bool 			hasBorn_ = false;
+
+		float 			invincibleTime_ = 0.0f;
 
 		void Start()
 		{
@@ -31,6 +35,7 @@ namespace mygame
 
 			animator_ = GetComponent<Animator>();
 			fireAudio_ = GetComponent<AudioSource>();
+			rigidbody_ = GetComponent<Rigidbody2D> ();
 
 			StatusScript statusPanel = GameCanvas.instance.statusPanel;
 			statusPanel.setLvl(lvl_);
@@ -39,7 +44,7 @@ namespace mygame
 			statusPanel.setHP(hp_);
 			statusPanel.setScoreNextNeed(nextNeededScore_);
 
-			rigidbody_ = GetComponent<Rigidbody2D> ();
+			playBornEffect();
 		}
 
 		void FixedUpdate()
@@ -49,41 +54,13 @@ namespace mygame
 				return;
 			}
 
-			Vector2 delta = new Vector2 (0.0f, 0.0f);
-			if(Application.platform == RuntimePlatform.Android ||
-			   Application.platform == RuntimePlatform.IPhonePlayer)
+			if(!hasBorn_)
 			{
-				if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
-				{
-					delta = Input.GetTouch(0).deltaPosition;
-				}
-			}
-			else
-			{
-				float horizontal = Input.GetAxis("Horizontal");
-				float vertical = Input.GetAxis("Vertical");
-				
-				delta = new Vector2(horizontal, vertical);
+				tickBorn();
+				return;
 			}
 
-			rigidbody_.velocity = delta * moveSpeed_;
-
-			Rect rect = GameMgr.instance.gameView_;
-			rigidbody_.position = new Vector2 (
-				Mathf.Clamp(rigidbody_.position.x, rect.xMin, rect.xMax),
-				Mathf.Clamp(rigidbody_.position.y, rect.yMin, rect.yMax)
-				);
-
-//			if(horizontal > 0)
-//			{
-//				SetDirection(FlyDirection.Left);
-//			}
-//			else if(horizontal < 0)
-//			{
-//				SetDirection(FlyDirection.Right);
-//			}
-
-			Fire();
+			tickMotion();
 		}
 
 		void SetDirection(FlyDirection dir)
@@ -138,6 +115,65 @@ namespace mygame
 			Instantiate (lvlUpEffectPrefab_, transform.position, Quaternion.identity);
 		}
 
+		void playBornEffect()
+		{
+			Rect rect = GameMgr.instance.gameView_;
+			rigidbody_.position = new Vector2(rect.center.x, rect.yMin);
+			rigidbody_.velocity = new Vector2(0.0f, 3.0f);
+
+			Instantiate(bornEffectPrefab_, transform.position, transform.rotation);
+		}
+
+		void tickBorn()
+		{
+			Rect rect = GameMgr.instance.gameView_;
+			if(rigidbody_.position.y >= rect.yMin + 2.0f)
+			{
+				hasBorn_ = true;
+				invincibleTime_ += 3.0f;
+			}
+		}
+
+		void tickMotion()
+		{
+			if(invincibleTime_ > 0.0f)
+			{
+				invincibleTime_ = Mathf.Max(invincibleTime_ - Time.fixedDeltaTime, 0.0f);
+			}
+
+			Vector2 delta = new Vector2 (0.0f, 0.0f);
+			if(Application.platform == RuntimePlatform.Android ||
+			   Application.platform == RuntimePlatform.IPhonePlayer)
+			{
+				if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+				{
+					delta = Input.GetTouch(0).deltaPosition;
+				}
+			}
+			else
+			{
+				float horizontal = Input.GetAxis("Horizontal");
+				float vertical = Input.GetAxis("Vertical");
+				
+				delta = new Vector2(horizontal, vertical);
+			}
+			
+			rigidbody_.velocity = delta * moveSpeed_;
+			
+			Rect rect = GameMgr.instance.gameView_;
+			rigidbody_.position = new Vector2 (
+				Mathf.Clamp(rigidbody_.position.x, rect.xMin, rect.xMax),
+				Mathf.Clamp(rigidbody_.position.y, rect.yMin, rect.yMax)
+				);
+			
+			Fire();
+		}
+
+	 	public override bool isAttackable()
+		{
+			return hasBorn_ && !(invincibleTime_ > 0.0f);
+		}
+
 		public override void setHP(int hp)
 		{
 			base.setHP(hp);
@@ -148,6 +184,7 @@ namespace mygame
 		{
 			base.onDead();
 
+			hasBorn_ = false;
 			GameCanvas.instance.rebornPanel.gameObject.SetActive(true);
 		}
 
@@ -161,6 +198,8 @@ namespace mygame
 			gameObject.SetActive(true);
 			setHP(hpMax_);
 			setAlive(true);
+
+			playBornEffect();
 		}
 	};
 }

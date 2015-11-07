@@ -25,7 +25,7 @@ namespace mygame
 		int 				waveIndex_ = 0;
 		
 		// Use this for initialization
-		void Start ()
+		void Awake ()
 		{
 			Rect gameView = new Rect();
 

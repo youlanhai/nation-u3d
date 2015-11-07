@@ -71,10 +71,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 506adb48760fceb42bf204de751089f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed_: -2
+  moveSpeed_: -3
   destroyable_: 0
   camp_: 1
   hp_: 1000
+  hpMax_: 1000
   attack_: 50
   defence_: 10
   eno_: 0
@@ -116,7 +117,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: moveSpeed_
-      value: -2
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsTrigger

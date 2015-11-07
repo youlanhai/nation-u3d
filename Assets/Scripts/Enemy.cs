@@ -54,9 +54,9 @@ namespace mygame
 		void OnTriggerEnter2D(Collider2D other)
 		{
 			Player player = other.gameObject.GetComponent<Player>();
-			if(player != null)
+			if(player != null && canIAttack(player))
 			{
-				player.setHP(-attack_);
+				player.impact(this, -attack_);
 			}
 		}
 
