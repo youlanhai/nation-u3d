@@ -53,12 +53,11 @@ namespace mygame
 
 		void OnTriggerEnter2D(Collider2D other)
 		{
-			print("Enemy: trigger enter.");
-		}
-		
-		void OnTriggerExit2D(Collider2D other)
-		{
-			print("Enemy: trigger exit.");
+			Player player = other.gameObject.GetComponent<Player>();
+			if(player != null)
+			{
+				player.setHP(-attack_);
+			}
 		}
 
 		protected override void onDead()

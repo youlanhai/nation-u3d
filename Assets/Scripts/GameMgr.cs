@@ -9,6 +9,8 @@ namespace mygame
 
 		public Rect		gameView_;
 
+		public Player 	player_;
+
 		string 			loadingLevelName_ = "main_scene";
 		
 		public string getLoadingLevel()

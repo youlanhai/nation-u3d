@@ -14,9 +14,9 @@ namespace mygame
 		Text 	labNextNeeded_;
 		Text	labLvl_;
 
-		// Use this for initialization
-		void Start ()
+		void Awake()
 		{
+			print ("status script awake.");
 			labBomb_ = transform.FindChild("labBomb").GetComponent<Text>();
 			labHP_ = transform.FindChild("labHP").GetComponent<Text>();
 			labScore_ = transform.FindChild("labScore").GetComponent<Text>();

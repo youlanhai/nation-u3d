@@ -16,8 +16,6 @@ namespace mygame
 
 		FlyDirection	direction_ = FlyDirection.None;
 
-
-		StatusScript	status_;
 		int 			numBomb_ = 0;
 		int 			nextNeededScore_ = 1000;
 
@@ -28,15 +26,18 @@ namespace mygame
 		void Start()
 		{
 			print ("Player start.");
-			animator_ = GetComponent<Animator>();
-			fireAudio_ = transform.FindChild("fireAudio").GetComponent<AudioSource>();
 
-			status_ = GameObject.Find("Canvas/status").GetComponent<StatusScript>();
-//			status_.setLvl(lvl_);
-//			status_.setScore(score_);
-//			status_.setBomb(numBomb_);
-//			status_.setHP(hp_);
-//			status_.setScoreNextNeed(nextNeededScore_);
+			GameMgr.instance.player_ = this;
+
+			animator_ = GetComponent<Animator>();
+			fireAudio_ = GetComponent<AudioSource>();
+
+			StatusScript statusPanel = GameCanvas.instance.statusPanel;
+			statusPanel.setLvl(lvl_);
+			statusPanel.setScore(score_);
+			statusPanel.setBomb(numBomb_);
+			statusPanel.setHP(hp_);
+			statusPanel.setScoreNextNeed(nextNeededScore_);
 
 			rigidbody_ = GetComponent<Rigidbody2D> ();
 		}
@@ -101,16 +102,6 @@ namespace mygame
 			}
 		}
 
-		void OnTriggerEnter2D(Collider2D other)
-		{
-			print("Player: trigger enter.");
-		}
-
-		void OnTriggerExit2D(Collider2D other)
-		{
-			print("Player: trigger exit.");
-		}
-
 		public override void acquireScore(int score)
 		{
 			base.acquireScore(score);
@@ -121,7 +112,7 @@ namespace mygame
 			}
 			else
 			{
-				status_.setScore(score_);
+				GameCanvas.instance.statusPanel.setScore(score_);
 			}
 		}
 
@@ -134,10 +125,10 @@ namespace mygame
 			attack_ += 10;
 			defence_ += 5;
 			numBomb_ += 1;
-			
-			status_.setLvl(lvl_);
-			status_.setScoreNextNeed(nextNeededScore_);
-			status_.setBomb(numBomb_);
+
+			GameCanvas.instance.statusPanel.setLvl(lvl_);
+			GameCanvas.instance.statusPanel.setScoreNextNeed(nextNeededScore_);
+			GameCanvas.instance.statusPanel.setBomb(numBomb_);
 
 			playLvlUpEffect();
 		}
@@ -150,7 +141,26 @@ namespace mygame
 		public override void setHP(int hp)
 		{
 			base.setHP(hp);
-			status_.setHP(hp_);
+			GameCanvas.instance.statusPanel.setHP(hp_);
+		}
+
+		protected override void onDead()
+		{
+			base.onDead();
+
+			GameCanvas.instance.rebornPanel.gameObject.SetActive(true);
+		}
+
+		public void reborn()
+		{
+			if(isAlive_)
+			{
+				return;
+			}
+
+			gameObject.SetActive(true);
+			setHP(hpMax_);
+			setAlive(true);
 		}
 	};
 }

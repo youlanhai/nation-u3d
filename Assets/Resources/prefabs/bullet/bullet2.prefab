@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21277386}
   - 114: {fileID: 11462538}
   - 61: {fileID: 6143064}
+  - 50: {fileID: 5073156}
   m_Layer: 0
   m_Name: bullet2
   m_TagString: Bullet
@@ -30,6 +31,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5073156
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183260}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &6143064
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -54,7 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 506adb48760fceb42bf204de751089f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed_: 2
+  moveSpeed_: 3
   destroyable_: 0
   camp_: 0
   hp_: 1000
@@ -112,7 +129,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: moveSpeed_
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: explosePrefab_

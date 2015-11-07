@@ -13,6 +13,7 @@ GameObject:
   - 95: {fileID: 9504324}
   - 50: {fileID: 5069858}
   - 68: {fileID: 6855916}
+  - 82: {fileID: 8219262}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -20,34 +21,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &147576
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 402230}
-  - 82: {fileID: 8252478}
-  m_Layer: 0
-  m_Name: fireAudio
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &402230
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 147576}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .699999988, y: -.360000014, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 22418322}
-  m_RootOrder: 0
 --- !u!50 &5069858
 Rigidbody2D:
   serializedVersion: 2
@@ -91,12 +64,12 @@ EdgeCollider2D:
   - {x: -.0463793464, y: -.176916599}
   - {x: -.0450694747, y: -.0713807344}
   - {x: -.146257699, y: .0267226696}
---- !u!82 &8252478
+--- !u!82 &8219262
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 147576}
+  m_GameObject: {fileID: 113322}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -106,6 +79,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
+  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -198,7 +172,7 @@ MonoBehaviour:
   lvl_: 1
   isAlive_: 1
   score_: 0
-  fireCD_: .200000003
+  fireCD_: .25
   bulletPrefab_: {fileID: 183260, guid: 316964d0df1a76d428bffdb18f603621, type: 2}
   explosePrefab_: {fileID: 118764, guid: 50c71d1faefe2094496375229aa87398, type: 2}
   lvlUpEffectPrefab_: {fileID: 168596, guid: dfad80b092e284049b6f81bdcc9277a4, type: 2}
@@ -237,8 +211,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 402230}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
@@ -261,6 +234,10 @@ Prefab:
       propertyPath: explosePrefab_
       value: 
       objectReference: {fileID: 118764, guid: 50c71d1faefe2094496375229aa87398, type: 2}
+    - target: {fileID: 0}
+      propertyPath: fireCD_
+      value: .25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 113322}

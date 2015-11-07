@@ -52,8 +52,6 @@ namespace mygame
 
 		void OnTriggerEnter2D(Collider2D other)
 		{
-			//print("Bullet: trigger enter.");
-
 			Combat target = other.GetComponent<Combat>();
 
 			if(target != null && canIAttack(target))
@@ -66,11 +64,6 @@ namespace mygame
 				}
 				Destroy(gameObject);
 			}
-		}
-		
-		void OnTriggerExit2D(Collider2D other)
-		{
-			//print("Bullet: trigger exit.");
 		}
 	}
 

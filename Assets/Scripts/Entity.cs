@@ -23,6 +23,7 @@ namespace mygame
 		public bool 	destroyable_ = false;
 		public Camp 	camp_ = Camp.Peace;
 		public int 		hp_ = 1000;
+		public int 		hpMax_ = 1000;
 		public int 		attack_ = 500;
 		public int 		defence_ = 100;
 		public int 		eno_ = 0;
@@ -55,13 +56,10 @@ namespace mygame
 
 		public virtual void setHP(int hp)
 		{
-			if(isAlive_)
+			hp_ = Mathf.Clamp(hp, 0, hpMax_);
+			if(isAlive_ && hp_ == 0)
 			{
-				hp_ = Mathf.Max(hp, 0);
-				if(hp_ == 0)
-				{
-					setAlive(false);
-				}
+				setAlive(false);
 			}
 		}
 		
