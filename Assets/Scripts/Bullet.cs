@@ -23,6 +23,7 @@ namespace mygame
 		// Use this for initialization
 		void Start ()
 		{
+			GetComponent<Rigidbody2D> ().velocity = transform.up * moveSpeed_;
 		}
 		
 		// Update is called once per frame
@@ -30,8 +31,6 @@ namespace mygame
 		{
 			if(isAlive_)
 			{
-				transform.Translate(0.0f, moveSpeed_ * Time.deltaTime, 0.0f);
-
 				if(!isActive_)
 				{
 					if(GameMgr.instance.gameView_.Contains(transform.position))

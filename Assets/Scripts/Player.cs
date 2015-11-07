@@ -23,37 +23,38 @@ namespace mygame
 
 		public GameObject	lvlUpEffectPrefab_;
 
+		Rigidbody2D 	rigidbody_;
+
 		void Start()
 		{
+			print ("Player start.");
 			animator_ = GetComponent<Animator>();
 			fireAudio_ = transform.FindChild("fireAudio").GetComponent<AudioSource>();
 
 			status_ = GameObject.Find("Canvas/status").GetComponent<StatusScript>();
-			status_.setLvl(lvl_);
-			status_.setScore(score_);
-			status_.setBomb(numBomb_);
-			status_.setHP(hp_);
-			status_.setScoreNextNeed(nextNeededScore_);
+//			status_.setLvl(lvl_);
+//			status_.setScore(score_);
+//			status_.setBomb(numBomb_);
+//			status_.setHP(hp_);
+//			status_.setScoreNextNeed(nextNeededScore_);
+
+			rigidbody_ = GetComponent<Rigidbody2D> ();
 		}
 
-		void Update()
+		void FixedUpdate()
 		{
 			if(!isAlive_)
 			{
 				return;
 			}
 
-			Vector3 position = transform.position;
-
+			Vector2 delta = new Vector2 (0.0f, 0.0f);
 			if(Application.platform == RuntimePlatform.Android ||
 			   Application.platform == RuntimePlatform.IPhonePlayer)
 			{
 				if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
 				{
-					Vector2 dp = Input.GetTouch(0).deltaPosition;
-
-					Vector3 delta = new Vector3(dp.x, dp.y, 0);
-					position += delta * Time.deltaTime;
+					delta = Input.GetTouch(0).deltaPosition;
 				}
 			}
 			else
@@ -61,14 +62,16 @@ namespace mygame
 				float horizontal = Input.GetAxis("Horizontal");
 				float vertical = Input.GetAxis("Vertical");
 				
-				Vector3 delta = new Vector3(horizontal, vertical, 0);
-				position += delta * (moveSpeed_ * Time.deltaTime);
+				delta = new Vector2(horizontal, vertical);
 			}
 
+			rigidbody_.velocity = delta * moveSpeed_;
+
 			Rect rect = GameMgr.instance.gameView_;
-			position.x = Mathf.Clamp(position.x, rect.xMin, rect.xMax);
-			position.y = Mathf.Clamp(position.y, rect.yMin, rect.yMax);
-			transform.position = position;
+			rigidbody_.position = new Vector2 (
+				Mathf.Clamp(rigidbody_.position.x, rect.xMin, rect.xMax),
+				Mathf.Clamp(rigidbody_.position.y, rect.yMin, rect.yMax)
+				);
 
 //			if(horizontal > 0)
 //			{
