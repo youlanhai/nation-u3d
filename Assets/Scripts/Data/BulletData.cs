@@ -18,22 +18,19 @@ namespace gamedata
 		public string 	prefab;
 		public float 	rotation;
 		public Vector2 	position;
-		public Vector2 	velocity;
-		public Vector2 	accelerate;
+		public float 	velocity;
+		public float 	accelerate;
 
 		public BulletData(LitJson.JsonData data)
 		{
-			prefab = data["prefab"].ToString();
-			rotation = (float)data["rotation"];
+			prefab = (string)data["prefab"];
 
 			LitJson.JsonData jvalue = data["position"];
 			position = new Vector2((float)jvalue[0], (float)jvalue[1]);
-
-			jvalue = data["velocity"];
-			velocity = new Vector2((float)jvalue[0], (float)jvalue[1]);
-
-			jvalue = data["accelerate"];
-			accelerate = new Vector2((float)jvalue[0], (float)jvalue[1]);
+			
+			rotation = (float)data["rotation"];
+			velocity = (float)data["velocity"];
+			accelerate = (float)data["accelerate"];
 		}
 	}
 

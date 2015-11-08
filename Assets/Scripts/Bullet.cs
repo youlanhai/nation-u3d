@@ -6,24 +6,27 @@ namespace mygame
 
 	public class Bullet : Entity
 	{
-		protected Combat		owner_;
+		Combat					owner_;
 		bool 					isActive_ = false;
 
 		public GameObject		explosePrefab_;
 
-		public void setOwner(Combat owner)
+		public void init(Combat owner, gamedata.BulletData data)
 		{
 			owner_ = owner;
 
 			camp_ = owner_.camp_;
 			lvl_ = owner_.lvl_;
 			attack_ = owner_.attack_;
+			
+			Rigidbody2D rigidbody = GetComponent<Rigidbody2D> ();
+			rigidbody.velocity = transform.up * data.velocity;
+			rigidbody.AddForce(transform.up * data.accelerate);
 		}
 
 		// Use this for initialization
 		void Start ()
 		{
-			GetComponent<Rigidbody2D> ().velocity = transform.up * moveSpeed_;
 		}
 		
 		// Update is called once per frame

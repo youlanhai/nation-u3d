@@ -54,7 +54,7 @@ namespace mygame
 
 					GameObject bullet = Instantiate(prefab, position, rotation) as GameObject;
 					Bullet ent = bullet.GetComponent<Bullet>();
-					ent.setOwner(this);
+					ent.init(this, data);
 				}
 
 				if(fireAudio_ != null)

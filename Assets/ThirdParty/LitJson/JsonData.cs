@@ -413,11 +413,19 @@ namespace LitJson
             return false;
         }
 
+		public static explicit operator Single (JsonData data)
+		{
+			if(data.type == JsonType.Double) return (Single)data.inst_double;
+			if(data.type == JsonType.Int) return (Single)data.inst_int;
+			if(data.type == JsonType.Long) return (Single)data.inst_long;
+			return 0.0f;
+		}
+
         public static explicit operator Double (JsonData data)
         {
 			if(data.type == JsonType.Double) return data.inst_double;
-			if(data.type == JsonType.Int) return data.inst_int;
-			if(data.type == JsonType.Long) return data.inst_long;
+			if(data.type == JsonType.Int) return (Double)data.inst_int;
+			if(data.type == JsonType.Long) return (Double)data.inst_long;
             return 0.0;
         }
 

@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4d9bbe9502bd84393a6cff12cefb42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed_: 2
+  moveSpeed_: 1
   destroyable_: 1
   camp_: 1
   hp_: 100
@@ -128,7 +128,7 @@ Prefab:
         type: 3}
     - target: {fileID: 0}
       propertyPath: moveSpeed_
-      value: -2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: hp_
