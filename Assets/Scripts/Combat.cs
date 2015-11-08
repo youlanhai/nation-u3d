@@ -9,7 +9,7 @@ namespace mygame
 		public int 			score_ = 0;
 		public float 		fireCD_ = 0.5f;
 
-		public GameObject	bulletPrefab_;
+		public int			bulletID_ = 0;
 		public GameObject 	explosePrefab_;
 		
 		protected float 			lastFireTime_ = 0.0f;
@@ -40,13 +40,22 @@ namespace mygame
 		
 		public void Fire()
 		{
-			if(Time.time - lastFireTime_ >= fireCD_)
+			if(bulletID_ > 0 && Time.time - lastFireTime_ >= fireCD_)
 			{
 				lastFireTime_ = Time.time;
-				
-				GameObject bullet = Instantiate(bulletPrefab_, transform.position, transform.rotation) as GameObject;
-				Bullet ent = bullet.GetComponent<Bullet>();
-				ent.setOwner(this);
+
+				gamedata.BulletEmitter emiter = GameMgr.instance.BulletData.bullets[bulletID_];
+
+				foreach(gamedata.BulletData data in emiter.items)
+				{
+					GameObject prefab = Resources.Load<GameObject>("prefabs/bullet/" + data.prefab);
+					Vector3 position = transform.position + new Vector3(data.position.x, data.position.y, 0.0f);
+					Quaternion rotation = transform.rotation * Quaternion.Euler(0.0f, 0.0f, data.rotation);
+
+					GameObject bullet = Instantiate(prefab, position, rotation) as GameObject;
+					Bullet ent = bullet.GetComponent<Bullet>();
+					ent.setOwner(this);
+				}
 
 				if(fireAudio_ != null)
 				{

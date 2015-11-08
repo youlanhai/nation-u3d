@@ -107,7 +107,7 @@ MonoBehaviour:
   isAlive_: 1
   score_: 100
   fireCD_: 2
-  bulletPrefab_: {fileID: 168090, guid: f31bdaee569a36f46bd845651d870e29, type: 2}
+  bulletID_: 100
   explosePrefab_: {fileID: 176140, guid: 8513661aa03a89b46ab5ec3b46075e41, type: 2}
 --- !u!212 &21239906
 SpriteRenderer:
@@ -189,6 +189,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: moveSpeed_
       value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bulletID_
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
