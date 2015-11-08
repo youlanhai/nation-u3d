@@ -11,7 +11,41 @@ namespace mygame
 
 		public Player 	player_;
 
+		public Level    Level{ get; set; }
+
 		string 			loadingLevelName_ = "main_scene";
+
+		gamedata.BulletDataMgr bulletData_;
+		public gamedata.BulletDataMgr BulletData{ get{ return bulletData_; }}
+
+		public GameMgr()
+		{
+			loadBulletData("levels/bullets");
+		}
+
+		bool loadBulletData(string file)
+		{
+			TextAsset textAsset = Resources.Load<TextAsset>(file);
+			if(textAsset == null)
+			{
+				Debug.LogError("Failed to load file " + file);
+				return false;
+			}
+
+			LitJson.JsonData data;
+			try
+			{
+				data = LitJson.JsonMapper.ToObject(textAsset.text);
+			}
+			catch(System.Exception e)
+			{
+				Debug.LogError("Failed to parse json file " + file + ", exception: " + e.ToString());
+				return false;
+			}
+			
+			bulletData_ = new gamedata.BulletDataMgr(data);
+			return true;
+		}
 		
 		public string getLoadingLevel()
 		{

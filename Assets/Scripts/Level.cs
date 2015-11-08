@@ -23,7 +23,7 @@ namespace mygame
 		float 				lastCreateTime_ = 0.0f;
 		float 				totalTime_ = 0;
 		int 				waveIndex_ = 0;
-		
+
 		// Use this for initialization
 		void Awake ()
 		{
