@@ -1,0 +1,12 @@
+[
+	[
+		{"prefab" : "enemy7", "position" : [-2, 0], "rotation" : 0, "velocity" : 1, "accelerate" : 0},
+		{"prefab" : "enemy7", "position" : [0, 0], "rotation" : 0, "velocity" : 1, "accelerate" : 0},
+		{"prefab" : "enemy7", "position" : [2, 0], "rotation" : 0, "velocity" : 1, "accelerate" : 0}
+	],
+	[
+		{"prefab" : "enemy7", "position" : [-2.5, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -1},
+		{"prefab" : "enemy7", "position" : [0, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -1},
+		{"prefab" : "enemy7", "position" : [2.5, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -1}
+	]
+]

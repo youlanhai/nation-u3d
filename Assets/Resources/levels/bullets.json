@@ -1,6 +1,6 @@
 {
 	"1" : [
-		{"prefab" : "bullet1", "position" : [0, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 0}
+		{"prefab" : "bullet1", "position" : [0, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -4}
 	],
 	"2" : [
 		{"prefab" : "bullet2", "position" : [0, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 0}
