@@ -71,7 +71,9 @@ namespace mygame
 			Vector3 position = new Vector3(node.position.x, node.position.y, 0.0f);
 			position = transform.TransformPoint(position);
 
-			GameObject.Instantiate(node.entityPrefab, position, Quaternion.identity);
+			Quaternion rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+
+			GameObject.Instantiate(node.entityPrefab, position, rotation);
 		}
 	}
 }
