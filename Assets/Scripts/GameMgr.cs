@@ -8,9 +8,7 @@ namespace mygame
 		public static GameMgr instance = new GameMgr();
 
 		public Rect		gameView_;
-
-		public Player 	player_;
-
+		public Player 	Player{ get; set; }
 		public Level    Level{ get; set; }
 
 		string 			loadingLevelName_ = "main_scene";
@@ -18,32 +16,37 @@ namespace mygame
 		gamedata.BulletDataMgr bulletData_;
 		public gamedata.BulletDataMgr BulletData{ get{ return bulletData_; }}
 
+		gamedata.LevelDataMgr levelData_;
+		public gamedata.LevelDataMgr LevelData{ get{ return levelData_; } }
+
+
 		public GameMgr()
 		{
 			loadBulletData("levels/bullets");
+			loadLevelData("levels/level1");
 		}
 
 		bool loadBulletData(string file)
 		{
-			TextAsset textAsset = Resources.Load<TextAsset>(file);
-			if(textAsset == null)
+			LitJson.JsonData data = JsonHelper.LoadJsonFile(file);
+			if(data == null)
 			{
-				Debug.LogError("Failed to load file " + file);
-				return false;
-			}
-
-			LitJson.JsonData data;
-			try
-			{
-				data = LitJson.JsonMapper.ToObject(textAsset.text);
-			}
-			catch(System.Exception e)
-			{
-				Debug.LogError("Failed to parse json file " + file + ", exception: " + e.ToString());
 				return false;
 			}
 			
 			bulletData_ = new gamedata.BulletDataMgr(data);
+			return true;
+		}
+
+		bool loadLevelData(string file)
+		{
+			LitJson.JsonData data = JsonHelper.LoadJsonFile(file);
+			if(data == null)
+			{
+				return false;
+			}
+
+			levelData_ = new gamedata.LevelDataMgr(data);
 			return true;
 		}
 		

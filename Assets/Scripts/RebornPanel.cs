@@ -28,7 +28,7 @@ namespace mygame
 		{
 			gameObject.SetActive(false);
 
-			GameMgr.instance.player_.reborn();
+			GameMgr.instance.Player.reborn();
 		}
 
 		void onBtnExit()

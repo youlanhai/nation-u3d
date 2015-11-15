@@ -27,15 +27,18 @@ namespace mygame
 
 		float 			invincibleTime_ = 0.0f;
 
-		void Start()
+		void Awake()
 		{
-			print ("Player start.");
-
-			GameMgr.instance.player_ = this;
-
+			GameMgr.instance.Player = this;
+			
 			animator_ = GetComponent<Animator>();
 			fireAudio_ = GetComponent<AudioSource>();
 			rigidbody_ = GetComponent<Rigidbody2D> ();
+		}
+
+		void Start()
+		{
+			print ("Player start.");
 
 			StatusScript statusPanel = GameCanvas.instance.statusPanel;
 			statusPanel.setLvl(lvl_);

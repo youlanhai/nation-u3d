@@ -4,25 +4,18 @@ using System.Collections.Generic;
 
 namespace mygame
 {
-	[System.Serializable]
-	public struct LevelNode
-	{
-		public float 		time;
-		public GameObject 	entityPrefab;
-		public Vector2 		position;
-	}
-	
 	public class Level : MonoBehaviour
 	{
 		public float 		createInterval_ = 2.0f;
 		public GameObject   randomEnemyPrefab_;
 
 		public Rect			localGameView_;
-		public LevelNode[] 	levelNodes_;
 
-		float 				lastCreateTime_ = 0.0f;
 		float 				totalTime_ = 0;
-		int 				waveIndex_ = 0;
+		int 				waveIndex_ = -1;
+		int 				aliveEnemy_ = 0;
+
+		gamedata.LevelDataMgr levelData_;
 
 		// Use this for initialization
 		void Awake ()
@@ -36,44 +29,67 @@ namespace mygame
 			gameView.height = localGameView_.height * transform.lossyScale.y;
 
 			GameMgr.instance.setGameView(gameView);
+			GameMgr.instance.Level = this;
+		}
+
+		void Start()
+		{
+			levelData_ = GameMgr.instance.LevelData;
 		}
 		
 		// Update is called once per frame
 		void Update ()
 		{
 			totalTime_ += Time.deltaTime;
-			if(waveIndex_ < levelNodes_.Length)
+
+			if(aliveEnemy_ <= 0)
 			{
-				while(waveIndex_ < levelNodes_.Length &&
-				      totalTime_ >= levelNodes_[waveIndex_].time)
+				++waveIndex_;
+
+				if(waveIndex_ >= levelData_.Count)
 				{
-					createEntity(levelNodes_[waveIndex_++]);
+					// game succed
 				}
-			}
+				else
+				{
+					gamedata.LevelWaveData waveData = levelData_.getWaveData(waveIndex_);
+					aliveEnemy_ += waveData.datas.Length;
 
-			if(Time.time - lastCreateTime_ >= createInterval_)
-			{
-				lastCreateTime_ = Time.time;
-
-				LevelNode node = new LevelNode();
-				
-				float x = Random.Range(localGameView_.xMin, localGameView_.xMax);
-				node.time = totalTime_;
-				node.position = new Vector3(x, localGameView_.yMax, 0);
-				node.entityPrefab = randomEnemyPrefab_;
-
-				createEntity(node);
+					foreach(gamedata.LevelData data in waveData.datas)
+					{
+						createEntity(data);
+					}
+				}
 			}
 		}
 		
-		void createEntity(LevelNode node)
+		void createEntity(gamedata.LevelData data)
 		{
-			Vector3 position = new Vector3(node.position.x, node.position.y, 0.0f);
-			position = transform.TransformPoint(position);
+			Rect rect = GameMgr.instance.gameView_;
+			float startX = rect.x + rect.width * 0.5f;
+			float startY = rect.yMax;
 
-			Quaternion rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+			GameObject prefab = Resources.Load<GameObject>("prefabs/plane/" + data.prefab);
+			Vector3 position = new Vector3(startX + data.position.x, startY + data.position.y, 0.0f);
+			Quaternion rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f + data.rotation);
+			
+			print ("enity position: " + position + " rotation:" + rotation);
+			
+			GameObject obj = Instantiate(prefab, position, rotation) as GameObject;
+			Enemy ent = obj.GetComponent<Enemy>();
+			ent.WaveIndex = waveIndex_;
 
-			GameObject.Instantiate(node.entityPrefab, position, rotation);
+			Rigidbody2D rigidbody = ent.GetComponent<Rigidbody2D> ();
+			rigidbody.velocity = ent.transform.up * data.velocity;
+			rigidbody.AddForce(ent.transform.up * data.accelerate);
+		}
+
+		public void onEnemyDead(Enemy ent)
+		{
+			if(ent.WaveIndex == waveIndex_)
+			{
+				--aliveEnemy_;
+			}
 		}
 	}
 }

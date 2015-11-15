@@ -6,6 +6,8 @@ namespace mygame
 
 	public class Enemy : Combat
 	{
+		public int WaveIndex { get; set; }
+
 		bool 	isActive_ = false;
 
 		// Use this for initialization
@@ -18,8 +20,6 @@ namespace mygame
 			{
 				fireAudio_ = t.GetComponent<AudioSource>();
 			}
-
-			GetComponent<Rigidbody2D> ().velocity = transform.up * moveSpeed_;
 		}
 		
 		// Update is called once per frame
@@ -41,6 +41,7 @@ namespace mygame
 						isActive_ = false;
 						isAlive_ = false;
 						Destroy(gameObject, 0.1f);
+						GameMgr.instance.Level.onEnemyDead(this);
 					}
 				}
 
@@ -64,6 +65,8 @@ namespace mygame
 		{
 			base.onDead();
 			GameObject.Destroy(gameObject, 1.0f);
+
+			GameMgr.instance.Level.onEnemyDead(this);
 		}
 	}
 
