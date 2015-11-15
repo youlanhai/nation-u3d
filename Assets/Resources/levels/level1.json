@@ -1,40 +1,40 @@
 [
 	[
-		{"prefab" : "enemy2", "position" : [-2, 0], "rotation" : 0, "velocity" : 1, "accelerate" : 0},
-		{"prefab" : "enemy1", "position" : [0, 0], "rotation" : 0, "velocity" : 1, "accelerate" : 0},
-		{"prefab" : "enemy3", "position" : [2, 0], "rotation" : 0, "velocity" : 1, "accelerate" : 0}
+		{"prefab" : "enemy2", "position" : [-2, 0], "rotation" : 0, "velocity" : 1, "accelerate" : 0, "bullet" : 1},
+		{"prefab" : "enemy1", "position" : [0, 0], "rotation" : 0, "velocity" : 1, "accelerate" : 0, "bullet" : 1},
+		{"prefab" : "enemy3", "position" : [2, 0], "rotation" : 0, "velocity" : 1, "accelerate" : 0, "bullet" : 1}
 	],
 	[
-		{"prefab" : "enemy4", "position" : [-2.5, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -1},
-		{"prefab" : "enemy4", "position" : [0, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -1},
-		{"prefab" : "enemy4", "position" : [2.5, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -1}
+		{"prefab" : "enemy4", "position" : [-2.5, 0], "rotation" : 0, "velocity" : 1, "accelerate" : -1, "bullet" : 1030},
+		{"prefab" : "enemy4", "position" : [0, 0], "rotation" : 0, "velocity" : 1, "accelerate" : -1, "bullet" : 1030},
+		{"prefab" : "enemy4", "position" : [2.5, 0], "rotation" : 0, "velocity" : 1, "accelerate" : -1, "bullet" : 1030}
 	],
 	[
-		{"prefab" : "enemy5", "position" : [-2.5, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -1},
-		{"prefab" : "enemy5", "position" : [0, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -1},
-		{"prefab" : "enemy5", "position" : [2.5, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -1}
+		{"prefab" : "enemy5", "position" : [-2.5, 0], "rotation" : 0, "velocity" : 1, "accelerate" : -1, "bullet" : 1060},
+		{"prefab" : "enemy5", "position" : [0, 0], "rotation" : 0, "velocity" : 1, "accelerate" : -1, "bullet" : 1060},
+		{"prefab" : "enemy5", "position" : [2.5, 0], "rotation" : 0, "velocity" : 1, "accelerate" : -1, "bullet" : 1060}
 	],
 	[
-		{"prefab" : "enemy6", "position" : [-2.5, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -1},
-		{"prefab" : "enemy6", "position" : [0, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -1},
-		{"prefab" : "enemy6", "position" : [2.5, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -1}
+		{"prefab" : "enemy6", "position" : [-2.5, 0], "rotation" : 0, "velocity" : 1, "accelerate" : -1, "bullet" : 1070},
+		{"prefab" : "enemy6", "position" : [0, 0], "rotation" : 0, "velocity" : 1, "accelerate" : -1, "bullet" : 1070},
+		{"prefab" : "enemy6", "position" : [2.5, 0], "rotation" : 0, "velocity" : 1, "accelerate" : -1, "bullet" : 1070}
 	],
 	[
-		{"prefab" : "enemy7", "position" : [-2.5, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -1},
-		{"prefab" : "enemy7", "position" : [0, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -1},
-		{"prefab" : "enemy7", "position" : [2.5, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -1}
+		{"prefab" : "enemy7", "position" : [-2.5, 0], "rotation" : 0, "velocity" : 1, "accelerate" : -1, "bullet" : 1090},
+		{"prefab" : "enemy7", "position" : [0, 0], "rotation" : 0, "velocity" : 1, "accelerate" : -1, "bullet" : 1090},
+		{"prefab" : "enemy7", "position" : [2.5, 0], "rotation" : 0, "velocity" : 1, "accelerate" : -1, "bullet" : 1090}
 	],
 	[
-		{"prefab" : "enemy8", "position" : [-2.5, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -1},
-		{"prefab" : "enemy8", "position" : [0, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -1},
-		{"prefab" : "enemy8", "position" : [2.5, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -1}
+		{"prefab" : "enemy8", "position" : [-2.5, 0], "rotation" : 0, "velocity" : 1, "accelerate" : -1, "bullet" : 1100},
+		{"prefab" : "enemy8", "position" : [0, 0], "rotation" : 0, "velocity" : 1, "accelerate" : -1, "bullet" : 1100},
+		{"prefab" : "enemy8", "position" : [2.5, 0], "rotation" : 0, "velocity" : 1, "accelerate" : -1, "bullet" : 1100}
 	],
 	[
-		{"prefab" : "enemy9", "position" : [-2.5, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -1},
-		{"prefab" : "enemy9", "position" : [0, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -1},
-		{"prefab" : "enemy9", "position" : [2.5, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -1}
+		{"prefab" : "enemy9", "position" : [-2.5, 0], "rotation" : 0, "velocity" : 1, "accelerate" : -1, "bullet" : 1110},
+		{"prefab" : "enemy9", "position" : [0, 0], "rotation" : 0, "velocity" : 1, "accelerate" : -1, "bullet" : 1110},
+		{"prefab" : "enemy9", "position" : [2.5, 0], "rotation" : 0, "velocity" : 1, "accelerate" : -1, "bullet" : 1110}
 	],
 	[
-		{"prefab" : "enemy10", "position" : [2.5, 0], "rotation" : 0, "velocity" : 1, "accelerate" : -1}
+		{"prefab" : "enemy10", "position" : [2.5, 0], "rotation" : 0, "velocity" : 1, "accelerate" : -1, "bullet" : 1140}
 	]
 ]

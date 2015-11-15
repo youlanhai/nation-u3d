@@ -20,6 +20,7 @@ namespace gamedata
 		public float 	velocity;
 		public float 	accelerate;
 		public float 	rotation;
+		public int 		bullet;
 
 		public LevelData (LitJson.JsonData data)
 		{
@@ -33,6 +34,7 @@ namespace gamedata
 			velocity = (float)data["velocity"];
 			accelerate = (float)data["accelerate"];
 			rotation = (float)data["rotation"];
+			bullet = (int)data["bullet"];
 		}
 	}
 

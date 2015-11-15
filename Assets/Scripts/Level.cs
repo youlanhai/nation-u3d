@@ -78,6 +78,7 @@ namespace mygame
 			GameObject obj = Instantiate(prefab, position, rotation) as GameObject;
 			Enemy ent = obj.GetComponent<Enemy>();
 			ent.WaveIndex = waveIndex_;
+			ent.bulletID_ = data.bullet;
 
 			Rigidbody2D rigidbody = ent.GetComponent<Rigidbody2D> ();
 			rigidbody.velocity = ent.transform.up * data.velocity;

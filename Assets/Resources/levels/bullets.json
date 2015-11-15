@@ -1,23 +1,88 @@
 {
 	"1" : [
-		{"prefab" : "bullet1", "position" : [0, 0], "rotation" : 0, "velocity" : 2, "accelerate" : -4}
+		{"prefab" : "1", "position" : [0, 0], "rotation" : 0, "velocity" : 3, "accelerate" : -4}
 	],
 	"2" : [
-		{"prefab" : "bullet2", "position" : [0, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 0}
+		{"prefab" : "2", "position" : [0, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 0}
 	],
-	"100" : [
-		{"prefab" : "bullet3", "position" : [0, 0], "rotation" : 0, "velocity" : 2, "accelerate" : 0},
-		{"prefab" : "bullet3", "position" : [0, 0], "rotation" : 45, "velocity" : 2, "accelerate" : 0},
-		{"prefab" : "bullet3", "position" : [0, 0], "rotation" : 90, "velocity" : 2, "accelerate" : 0},
-		{"prefab" : "bullet3", "position" : [0, 0], "rotation" : 135, "velocity" : 2, "accelerate" : 0},
-		{"prefab" : "bullet3", "position" : [0, 0], "rotation" : 180, "velocity" : 2, "accelerate" : 0},
-		{"prefab" : "bullet3", "position" : [0, 0], "rotation" : 225, "velocity" : 2, "accelerate" : 0},
-		{"prefab" : "bullet3", "position" : [0, 0], "rotation" : 270, "velocity" : 2, "accelerate" : 0},
-		{"prefab" : "bullet3", "position" : [0, 0], "rotation" : 315, "velocity" : 2, "accelerate" : 0}
+	"1030" : [
+		{"prefab" : "3", "position" : [0, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 0},
+		{"prefab" : "3", "position" : [0, 0], "rotation" : 45, "velocity" : 3, "accelerate" : 0},
+		{"prefab" : "3", "position" : [0, 0], "rotation" : 90, "velocity" : 3, "accelerate" : 0},
+		{"prefab" : "3", "position" : [0, 0], "rotation" : 135, "velocity" : 3, "accelerate" : 0},
+		{"prefab" : "3", "position" : [0, 0], "rotation" : 180, "velocity" : 3, "accelerate" : 0},
+		{"prefab" : "3", "position" : [0, 0], "rotation" : 225, "velocity" : 3, "accelerate" : 0},
+		{"prefab" : "3", "position" : [0, 0], "rotation" : 270, "velocity" : 3, "accelerate" : 0},
+		{"prefab" : "3", "position" : [0, 0], "rotation" : 315, "velocity" : 3, "accelerate" : 0}
 	],
-	"101" : [
-		{"prefab" : "bullet4", "position" : [-0.5, 0], "rotation" : 0, "velocity" : 1, "accelerate" : 2},
-		{"prefab" : "bullet4", "position" : [0, 0], "rotation" : 0, "velocity" : 1, "accelerate" : 2},
-		{"prefab" : "bullet4", "position" : [0.5, 0], "rotation" : 0, "velocity" : 1, "accelerate" : 2}
+	"1040" : [
+		{"prefab" : "4", "position" : [-0.5, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2},
+		{"prefab" : "4", "position" : [0, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2},
+		{"prefab" : "4", "position" : [0.5, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2}
+	],
+	"1050" : [
+		{"prefab" : "5", "position" : [0, 0], "rotation" : 45, "velocity" : 3, "accelerate" : 2},
+		{"prefab" : "5", "position" : [0, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2},
+		{"prefab" : "5", "position" : [0, 0], "rotation" : -45, "velocity" : 3, "accelerate" : 2}
+	],
+	"1051" : [
+		{"prefab" : "5", "position" : [0, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 0},
+		{"prefab" : "5", "position" : [0, 0], "rotation" : 45, "velocity" : 3, "accelerate" : 0},
+		{"prefab" : "5", "position" : [0, 0], "rotation" : 90, "velocity" : 3, "accelerate" : 0},
+		{"prefab" : "5", "position" : [0, 0], "rotation" : 135, "velocity" : 3, "accelerate" : 0},
+		{"prefab" : "5", "position" : [0, 0], "rotation" : 180, "velocity" : 3, "accelerate" : 0},
+		{"prefab" : "5", "position" : [0, 0], "rotation" : 225, "velocity" : 3, "accelerate" : 0},
+		{"prefab" : "5", "position" : [0, 0], "rotation" : 270, "velocity" : 3, "accelerate" : 0},
+		{"prefab" : "5", "position" : [0, 0], "rotation" : 315, "velocity" : 3, "accelerate" : 0}
+	],
+	"1060" : [
+		{"prefab" : "6", "position" : [-0.5, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2},
+		{"prefab" : "6", "position" : [0, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2},
+		{"prefab" : "6", "position" : [0.5, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2}
+	],
+	"1070" : [
+		{"prefab" : "7", "position" : [0, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 0},
+		{"prefab" : "7", "position" : [0, 0], "rotation" : 45, "velocity" : 3, "accelerate" : 0},
+		{"prefab" : "7", "position" : [0, 0], "rotation" : 90, "velocity" : 3, "accelerate" : 0},
+		{"prefab" : "7", "position" : [0, 0], "rotation" : 135, "velocity" : 3, "accelerate" : 0},
+		{"prefab" : "7", "position" : [0, 0], "rotation" : 180, "velocity" : 3, "accelerate" : 0},
+		{"prefab" : "7", "position" : [0, 0], "rotation" : 225, "velocity" : 3, "accelerate" : 0},
+		{"prefab" : "7", "position" : [0, 0], "rotation" : 270, "velocity" : 3, "accelerate" : 0},
+		{"prefab" : "7", "position" : [0, 0], "rotation" : 315, "velocity" : 3, "accelerate" : 0}
+	],
+	"1080" : [
+		{"prefab" : "8", "position" : [-0.5, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2},
+		{"prefab" : "8", "position" : [0, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2},
+		{"prefab" : "8", "position" : [0.5, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2}
+	],
+	"1090" : [
+		{"prefab" : "9", "position" : [-0.5, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2},
+		{"prefab" : "9", "position" : [0, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2},
+		{"prefab" : "9", "position" : [0.5, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2}
+	],
+	"1100" : [
+		{"prefab" : "10", "position" : [-0.5, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2},
+		{"prefab" : "10", "position" : [0, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2},
+		{"prefab" : "10", "position" : [0.5, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2}
+	],
+	"1110" : [
+		{"prefab" : "11", "position" : [-0.5, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2},
+		{"prefab" : "11", "position" : [0, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2},
+		{"prefab" : "11", "position" : [0.5, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2}
+	],
+	"1120" : [
+		{"prefab" : "12", "position" : [-0.5, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2},
+		{"prefab" : "12", "position" : [0, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2},
+		{"prefab" : "12", "position" : [0.5, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2}
+	],
+	"1130" : [
+		{"prefab" : "13", "position" : [-0.5, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2},
+		{"prefab" : "13", "position" : [0, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2},
+		{"prefab" : "13", "position" : [0.5, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2}
+	],
+	"1140" : [
+		{"prefab" : "14", "position" : [-0.5, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2},
+		{"prefab" : "14", "position" : [0, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2},
+		{"prefab" : "14", "position" : [0.5, 0], "rotation" : 0, "velocity" : 3, "accelerate" : 2}
 	]
 }
