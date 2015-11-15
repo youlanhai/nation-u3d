@@ -10,16 +10,15 @@ namespace mygame
 
 		bool 	isActive_ = false;
 
+		void Awake()
+		{
+			animator_ = GetComponent<Animator>();
+			fireAudio_ = GetComponent<AudioSource>();
+		}
+
 		// Use this for initialization
 		void Start ()
 		{
-			animator_ = GetComponent<Animator>();
-
-			Transform t = transform.FindChild("fireAudio");
-			if(t != null)
-			{
-				fireAudio_ = t.GetComponent<AudioSource>();
-			}
 		}
 		
 		// Update is called once per frame

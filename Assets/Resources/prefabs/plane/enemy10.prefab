@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11482252}
   - 50: {fileID: 5083718}
   - 68: {fileID: 6862494}
+  - 82: {fileID: 8264152}
   m_Layer: 0
   m_Name: enemy10
   m_TagString: Enemy
@@ -67,6 +68,76 @@ EdgeCollider2D:
   - {x: .181779861, y: 1.85735083}
   - {x: .447205544, y: 1.12970018}
   - {x: .469193459, y: -1.71001172}
+--- !u!82 &8264152
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131566}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: cb8fd27c983252e419c84d100a753ed0, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!95 &9538414
 Animator:
   serializedVersion: 3
@@ -108,7 +179,7 @@ MonoBehaviour:
   score_: 100
   fireCD_: 2
   bulletID_: 100
-  explosePrefab_: {fileID: 176140, guid: 8513661aa03a89b46ab5ec3b46075e41, type: 2}
+  explosePrefab_: {fileID: 199296, guid: e2b2afc8417641b41a5bc434f63eebb9, type: 2}
 --- !u!212 &21248238
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -141,7 +212,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: explosePrefab_
+      value: 
+      objectReference: {fileID: 199296, guid: e2b2afc8417641b41a5bc434f63eebb9, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: cb8fd27c983252e419c84d100a753ed0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 131566}
