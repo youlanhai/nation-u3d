@@ -82,7 +82,11 @@ namespace mygame
 
 			Rigidbody2D rigidbody = ent.GetComponent<Rigidbody2D> ();
 			rigidbody.velocity = ent.transform.up * data.velocity;
-			rigidbody.AddForce(ent.transform.up * data.accelerate);
+
+			if(data.accelerate != 0.0f)
+			{
+				rigidbody.AddForce(ent.transform.up * data.accelerate);
+			}
 		}
 
 		public void onEnemyDead(Enemy ent)
