@@ -1,1 +1,3 @@
-Hello nation
+2d飞行射击游戏demo
+
+以前模仿别人做的2d飞行射击游戏，现在改用unity3d来实现。
